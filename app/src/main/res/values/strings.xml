@@ -6,4 +6,18 @@
         <item>Tester</item>
         <item>Programmer</item>
     </string-array>
+    <string-array name="vehicleColors">
+        <item>Choose a Color</item>
+        <item>Red</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+        <item>Green</item>
+        <item>Orange</item>
+        <item>Purple</item>
+        <item>Pink</item>
+        <item>Brown</item>
+        <item>White</item>
+        <item>Black</item>
+        <item>Beige</item>
+    </string-array>
 </resources>
