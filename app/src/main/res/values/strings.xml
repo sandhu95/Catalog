@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Catalog</string>
+    <string-array name="employeeType">
+        <item>Choose a Type</item>
+        <item>Manager</item>
+        <item>Tester</item>
+        <item>Programmer</item>
+    </string-array>
 </resources>
