@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:visibility="visible"
     tools:context=".RegisterEmployee">
 
     <TextView
@@ -159,6 +160,40 @@
         android:entries="@array/employeeType"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText5" />
+
+    <RadioGroup
+        android:id="@+id/vehicleType"
+        android:layout_width="221dp"
+        android:layout_height="27dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner">
+
+        <RadioButton
+            android:id="@+id/radioButton1"
+            android:layout_width="79dp"
+            android:layout_height="22dp"
+            android:text="Car"
+            tools:layout_editor_absoluteX="174dp"
+            tools:layout_editor_absoluteY="478dp" />
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="120dp"
+            android:layout_height="22dp"
+            android:text="MotorCycle" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Vehicle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/vehicleType" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
