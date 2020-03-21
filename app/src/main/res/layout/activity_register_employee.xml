@@ -9,7 +9,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/formLabel"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="10dp"
@@ -22,59 +22,60 @@
 
 
     <TextView
-        android:id="@+id/itemcostT"
+        android:id="@+id/firstNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textView"
+        android:layout_below="@id/formLabel"
         android:layout_marginStart="8dp"
         android:text="Employee First Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/ItemCost" />
+        app:layout_constraintTop_toTopOf="@+id/firstNameText" />
 
     <EditText
-        android:id="@+id/ItemCost"
+        android:id="@+id/firstNameText"
         android:layout_width="219dp"
         android:layout_height="37dp"
-        android:layout_alignParentRight="@+id/itemcostT"
+        android:layout_alignParentRight="@+id/firstNameLabel"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/formLabel" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/lastNameLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Employee Last Name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText2" />
+        app:layout_constraintTop_toTopOf="@+id/lastNameText" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/birthYearText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ItemCost" />
+        app:layout_constraintTop_toBottomOf="@+id/lastNameText" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/birthYearLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Employee Birth Year"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText" />
+        app:layout_constraintTop_toTopOf="@+id/birthYearText" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/lastNameText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
@@ -83,40 +84,40 @@
         android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/firstNameText" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/salaryLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Monthly Salary"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText3" />
+        app:layout_constraintTop_toTopOf="@+id/salaryText" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/salaryText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/birthYearText" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/occupationRateLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Occupation Rate"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText4" />
+        app:layout_constraintTop_toTopOf="@+id/occupationRateText" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/occupationRateText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
@@ -125,50 +126,50 @@
         android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/salaryText" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/employeeIDLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Employee ID"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText5" />
+        app:layout_constraintTop_toTopOf="@+id/employeeIDText" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/employeeIDText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4" />
+        app:layout_constraintTop_toBottomOf="@+id/occupationRateText" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/employeeTypeSpinnerLabel"
         android:layout_width="109dp"
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:text="Employee Type"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner" />
+        app:layout_constraintTop_toTopOf="@+id/employeeTypeSpinner" />
 
     <Spinner
-        android:id="@+id/spinner"
+        android:id="@+id/employeeTypeSpinner"
         android:layout_width="221dp"
         android:layout_height="27dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:entries="@array/employeeType"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText5" />
+        app:layout_constraintTop_toBottomOf="@+id/employeeIDText" />
 
     <RadioGroup
-        android:id="@+id/vehicleType"
+        android:id="@+id/vehicleTypeText"
         android:layout_width="221dp"
         android:layout_height="27dp"
         android:layout_marginTop="16dp"
@@ -193,47 +194,47 @@
     </RadioGroup>
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/vehicleTypeLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Vehicle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/vehicleType" />
+        app:layout_constraintTop_toTopOf="@+id/vehicleTypeText" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/vehicleModelLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Vehicle Model"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText6" />
+        app:layout_constraintTop_toTopOf="@+id/vehicleModelText" />
 
     <EditText
-        android:id="@+id/editText6"
+        android:id="@+id/vehicleModelText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:textSize="10sp"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleType" />
+        app:layout_constraintTop_toBottomOf="@+id/vehicleTypeText" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/plateNumberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Plate Number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editText7" />
+        app:layout_constraintTop_toTopOf="@+id/plateNumberText" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/plateNumberText"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
@@ -242,29 +243,29 @@
         android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText6" />
+        app:layout_constraintTop_toBottomOf="@+id/vehicleModelText" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/vehicleColorSpinnerLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Vehicle  Color"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spinner2" />
+        app:layout_constraintTop_toTopOf="@+id/vehicleColorSpinner" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/vehicleColorSpinner"
         android:layout_width="221dp"
         android:layout_height="35dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:entries="@array/vehicleColors"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText7" />
+        app:layout_constraintTop_toBottomOf="@+id/plateNumberText" />
 
     <Button
-        android:id="@+id/addButton2"
+        android:id="@+id/registerButton"
         android:layout_width="344dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
@@ -297,7 +298,7 @@
         android:textSize="10sp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+        app:layout_constraintTop_toBottomOf="@+id/employeeTypeSpinner" />
 
     <TextView
         android:id="@+id/clientsLabel"
