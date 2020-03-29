@@ -37,9 +37,9 @@
         android:layout_height="37dp"
         android:layout_alignParentRight="@+id/firstNameLabel"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:hint="first name"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
+        android:hint="first name"
         android:inputType="textPersonName"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -219,8 +219,8 @@
 
     <EditText
         android:id="@+id/vehicleModelText"
-        android:layout_width="221dp"
-        android:layout_height="35dp"
+        android:layout_width="222dp"
+        android:layout_height="33dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="4dp"
         android:ems="10"
@@ -274,16 +274,17 @@
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="344dp"
-        android:layout_height="43dp"
+        android:layout_width="341dp"
+        android:layout_height="37dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="24dp"
         android:text="Register"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vehicleColorSpinner" />
 
     <TextView
         android:id="@+id/projectLabel"
@@ -360,22 +361,61 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="Car Type"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/editText"
         app:layout_constraintEnd_toStartOf="@+id/editText"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleTypeText" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        app:layout_constraintVertical_bias="0.6" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="221dp"
-        android:layout_height="35dp"
+        android:layout_width="223dp"
+        android:layout_height="33dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="4dp"
         android:ems="10"
         android:hint="Car Type"
         android:inputType="textPersonName"
         android:textSize="10sp"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleTypeText" />
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="217dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="9dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vehicleTypeText">
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="79dp"
+            android:layout_height="wrap_content"
+            android:text="Yes"
+            tools:visibility="visible" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:text="No"
+            tools:visibility="visible" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/SideCarText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="Side Car"
+        android:visibility="visible"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
 </androidx.constraintlayout.widget.ConstraintLayout>
