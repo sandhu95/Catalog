@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
-    tools:context=".RegisterEmployee">
-
-
-    <TextView
-        android:id="@+id/formLabel"
+    tools:context=".RegisterEmployee"
+    android:scrollbars="vertical">
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_margin="10dp"
-        android:fontFamily="sherif"
-        android:gravity="center_horizontal"
-        android:text="Registration Form"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="10dp" />
+        android:layout_height="match_parent"
+        >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/formLabel"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sherif"
+            android:gravity="center_horizontal"
+            android:text="Registration Form"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="10dp" />
 
 
     <TextView
@@ -58,7 +67,7 @@
         android:id="@+id/birthYearText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="birth year"
@@ -80,7 +89,7 @@
         android:id="@+id/lastNameText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="last name"
@@ -102,7 +111,7 @@
         android:id="@+id/salaryText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="monthly salary"
@@ -124,7 +133,7 @@
         android:id="@+id/occupationRateText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="occupation rate"
@@ -146,7 +155,7 @@
         android:id="@+id/employeeIDText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="employee id"
@@ -168,7 +177,7 @@
         android:id="@+id/employeeTypeSpinner"
         android:layout_width="221dp"
         android:layout_height="27dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:entries="@array/employeeType"
         app:layout_constraintEnd_toEndOf="parent"
@@ -177,8 +186,8 @@
     <RadioGroup
         android:id="@+id/vehicleTypeText"
         android:layout_width="221dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -187,7 +196,7 @@
         <RadioButton
             android:id="@+id/radioButton1"
             android:layout_width="79dp"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="Car"
             tools:layout_editor_absoluteX="174dp"
             tools:layout_editor_absoluteY="478dp" />
@@ -195,7 +204,7 @@
         <RadioButton
             android:id="@+id/radioButton2"
             android:layout_width="120dp"
-            android:layout_height="22dp"
+            android:layout_height="wrap_content"
             android:text="MotorCycle" />
     </RadioGroup>
 
@@ -219,10 +228,10 @@
 
     <EditText
         android:id="@+id/vehicleModelText"
-        android:layout_width="222dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="221dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="model"
         android:inputType="number"
@@ -244,7 +253,7 @@
         android:id="@+id/plateNumberText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="plate number"
@@ -264,35 +273,36 @@
 
     <Spinner
         android:id="@+id/vehicleColorSpinner"
-        android:layout_width="220dp"
-        android:layout_height="29dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="221dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:entries="@array/vehicleColors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/plateNumberText" />
 
-    <Button
-        android:id="@+id/registerButton"
-        android:layout_width="341dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Register"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleColorSpinner" />
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="341dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Register"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleColorSpinner" />
 
-    <TextView
+        <TextView
         android:id="@+id/projectLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="#Projects"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText8" />
 
@@ -300,12 +310,12 @@
         android:id="@+id/editText8"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:textSize="10sp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/employeeTypeSpinner" />
 
@@ -323,7 +333,7 @@
         android:id="@+id/clientsText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -346,7 +356,7 @@
         android:id="@+id/bugsText"
         android:layout_width="221dp"
         android:layout_height="35dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="14dp"
         android:layout_marginEnd="8dp"
         android:ems="10"
         android:inputType="textPersonName"
@@ -357,24 +367,20 @@
 
     <TextView
         android:id="@+id/cartypeIDLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="56dp"
+        android:layout_height="19dp"
         android:layout_marginStart="8dp"
         android:text="Car Type"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@+id/editText"
-        app:layout_constraintEnd_toStartOf="@+id/editText"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintTop_toTopOf="@+id/editText" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="223dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="221dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Car Type"
         android:inputType="textPersonName"
@@ -383,39 +389,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="217dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="9dp"
-        android:orientation="horizontal"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleTypeText">
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            android:layout_width="221dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vehicleTypeText">
 
-        <RadioButton
-            android:id="@+id/radioButton3"
-            android:layout_width="79dp"
+            <RadioButton
+                android:id="@+id/radioButton3"
+                android:layout_width="79dp"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                tools:visibility="visible" />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                android:layout_width="64dp"
+                android:layout_height="wrap_content"
+                android:text="No"
+                tools:visibility="visible" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/SideCarText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes"
-            tools:visibility="gone" />
-
-        <RadioButton
-            android:id="@+id/radioButton4"
-            android:layout_width="64dp"
-            android:layout_height="wrap_content"
-            android:text="No"
-            tools:visibility="gone" />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/SideCarText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Side Car"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+            android:layout_marginStart="8dp"
+            android:text="Side Car"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
