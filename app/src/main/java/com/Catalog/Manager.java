@@ -1,6 +1,8 @@
 package com.Catalog;
 
 public class Manager extends Employee {
+    private int nbclients;
+
     public int getNbclients() {
         return nbclients;
     }
@@ -9,5 +11,7 @@ public class Manager extends Employee {
         this.nbclients = nbclients;
     }
 
-    private int nbclients;
+    public Manager(int nbclients) {
+        this.nbclients = nbclients;
     }
+}

@@ -1,6 +1,11 @@
 package com.Catalog;
 
 public class Programmer extends Employee {
+    public Programmer(int nbProjects) {
+        this.nbProjects = nbProjects;
+    }
+
+    private int nbProjects;
     public int getNbProjects() {
         return nbProjects;
     }
@@ -8,6 +13,4 @@ public class Programmer extends Employee {
     public void setNbProjects(int nbProjects) {
         this.nbProjects = nbProjects;
     }
-
-    public int nbProjects;
 }
