@@ -20,4 +20,14 @@
         <item>Black</item>
         <item>Beige</item>
     </string-array>
+    <string-array name="vehicleType">
+        <item>Choose Type</item>
+        <item>Sedan</item>
+        <item>SUV</item>
+        <item>Pickup Truck</item>
+        <item>Sports</item>
+        <item>Coupe</item>
+        <item>Hatchback</item>
+        <item>Convertible</item>
+    </string-array>
 </resources>
