@@ -1,3 +1,4 @@
+package com.Catalog;
 
 public class Vehicle {
     private int model;
@@ -27,5 +28,4 @@ public class Vehicle {
         this.plate = plate;
         this.color = color;
     }
-
 }
