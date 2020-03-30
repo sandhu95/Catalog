@@ -1,7 +1,6 @@
 package com.Catalog;
 
 public class Employee {
-
         private String name;
         private int age;
         private int birthYear;
@@ -36,6 +35,15 @@ public class Employee {
         }
         public void setRate(int rate) {
                 this.rate = rate;
+        }
+
+        public Employee(String name,int age,int birthYear,double monthlySalary,int rate) {
+                super();
+                this.age = age;
+                this.name=name;
+                this.birthYear=birthYear;
+                this.monthlySalary=monthlySalary;
+                this.rate=rate;
         }
 
 }
