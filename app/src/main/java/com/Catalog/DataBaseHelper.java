@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 
 public  class DataBaseHelper extends SQLiteOpenHelper
 {
-        // using Constants for column names
+
 
         private static final String DATABASE_NAME = "EmployeeDatabase";
         private static final int DATABASE_VERSION = 1;
@@ -26,7 +26,6 @@ public  class DataBaseHelper extends SQLiteOpenHelper
 
 
         public DataBaseHelper(@Nullable Context context) {
-            // cursor factory is when you are using your own custom cursor
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
 
