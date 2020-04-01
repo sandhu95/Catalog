@@ -3,6 +3,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.ColorSpace;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -43,22 +44,40 @@ public  class DataBaseHelper extends SQLiteOpenHelper
 
 
     @Override public void onCreate(SQLiteDatabase db) {
-
+    try {
         String sql = "CREATE TABLE " + TABLE_NAME1 + "(" +
                 EmployeeID + " INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY AUTOINCREMENT, " +
                 FIRST_NAME + " string(200) NOT NULL, " +
                 LAST_NAME + " string(200) NOT NULL, " +
-                BIRTH_YEAR + " int(200) NOT NULL, " +
-                MONTHLY_SALARY + " double NOT NULL,"+
-                OCCUPATION_RATE  + " int(200) NOT NULL,"+
-                EMPLOYEE_TYPE   + " string(200) NOT NULL);";
-                db.execSQL(sql);
-        String sq2="CREATE TABLE " + TABLE_NAME2 + "(" +
-                model + " int(200) NOT NULL, " +
+                BIRTH_YEAR + " integer(200) NOT NULL, " +
+                MONTHLY_SALARY + " double NOT NULL," +
+                OCCUPATION_RATE + " integer(200) NOT NULL," +
+                EMPLOYEE_TYPE + " string(200) NOT NULL);";
+        db.execSQL(sql);
+        String sq2 = "CREATE TABLE " + TABLE_NAME2 + "(" +
+                model + " integer(200) NOT NULL, " +
                 plate + " String(200) NOT NULL, " +
                 color + " String(200) NOT NULL);";
         db.execSQL(sq2);
-
+        String sq3 = "CREATE TABLE " + TABLE_NAME3 + "(" +
+                type + " String(200) NOT NULL);";
+        db.execSQL(sq3);
+        String sq4 = "CREATE TABLE " + TABLE_NAME4 + "(" +
+                sideCar + " String(200) NOT NULL);";
+        db.execSQL(sq4);
+        String sq5 = "CREATE TABLE " + TABLE_NAME5 + "(" +
+                nbProjects + " integer(200) NOT NULL);";
+        db.execSQL(sq5);
+        String sq6 = "CREATE TABLE " + TABLE_NAME6 + "(" +
+                nbClients + " integer NOT NULL);";
+        db.execSQL(sq6);
+        String sq7 = "CREATE TABLE " + TABLE_NAME7 + "(" +
+                nbBugs + " int(200) NOT NULL);";
+        db.execSQL(sq7);
+    }
+    catch( Exception e){
+            Log.e("dbAdapter", e.getMessage().toString());
+        }
 
     }
     @Override
