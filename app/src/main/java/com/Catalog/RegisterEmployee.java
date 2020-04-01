@@ -54,7 +54,20 @@ public class RegisterEmployee extends AppCompatActivity {
         int bYear= Integer.valueOf(birthYear.getText().toString());
         double mSalary = Double.valueOf(monthlySalary.getText().toString());
         int oRate= Integer.valueOf(occupationRate.getText().toString());
-        String eType = employeeType.getSelectedItem().toString().trim();
+        String eType = employeeType.getSelectedItem().toString();
+            if(eType.equals("Manager"))
+            {
+                int numberofclients=Integer.valueOf(clients.getText().toString());
+            }
+            if(eType.equals("Tester"))
+            {
+                int numberofbugs=Integer.valueOf(clients.getText().toString());
+            }
+            if(eType.equals("Programmer"))
+            {
+                int numberofprojects=Integer.valueOf(projects.getText().toString());
+            }
+
 
         if(carRadioBtn.isChecked())
          {
@@ -76,7 +89,29 @@ public class RegisterEmployee extends AppCompatActivity {
         String pNumber = plateNumber.getText().toString().trim();
         String vColor = vehicleColorSpinner.getSelectedItem().toString().trim();
     }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
 
+        firstName.setText("");
+        lastName.setText("");
+        birthYear.setText("");
+        monthlySalary.setText("");
+        occupationRate.setText("");
+        employeeID.setText("");
+        projects.setText("");
+        clients.setText("");
+        bugs.setText("");
+        vehicleModel.setText("");
+        plateNumber.setText("");
+        employeeType.setSelection(0);
+        carTypeSpinner.setSelection(0);
+        vehicleColorSpinner.setSelection(0);
+        carRadioBtn.setChecked(false);
+        motorcycleRadioBtn.setChecked(false);
+        sidecarYesRadioBtn.setChecked(false);
+        sidecarNoRadioBtn.setChecked(false);
+    }
 
 
 
