@@ -1,11 +1,11 @@
 package com.Catalog;
+import android.content.ContentValues;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.ColorSpace;
 import android.util.Log;
-
 import androidx.annotation.Nullable;
+
 
 public  class DataBaseHelper extends SQLiteOpenHelper
 {
@@ -22,6 +22,7 @@ public  class DataBaseHelper extends SQLiteOpenHelper
         private static final String OCCUPATION_RATE  = "";
         private static final String EMPLOYEE_TYPE = "";
         private static final String TABLE_NAME2 = "Vehicle";
+        private static final String Vehicle_Type ="";
         private static final String model = "";
         private static final String plate = "";
         private static final String color = "";
@@ -46,51 +47,151 @@ public  class DataBaseHelper extends SQLiteOpenHelper
     @Override public void onCreate(SQLiteDatabase db) {
     try {
         String sql = "CREATE TABLE " + TABLE_NAME1 + "(" +
-                EmployeeID + " INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY AUTOINCREMENT, " +
-                FIRST_NAME + " string(200) NOT NULL, " +
-                LAST_NAME + " string(200) NOT NULL, " +
-                BIRTH_YEAR + " integer(200) NOT NULL, " +
-                MONTHLY_SALARY + " double NOT NULL," +
-                OCCUPATION_RATE + " integer(200) NOT NULL," +
-                EMPLOYEE_TYPE + " string(200) NOT NULL);";
+                EmployeeID + " INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY, " +
+                FIRST_NAME + " TEXT NOT NULL, " +
+                LAST_NAME + " TEXT NOT NULL, " +
+                BIRTH_YEAR + " INTEGER NOT NULL, " +
+                MONTHLY_SALARY + " REAL NOT NULL," +
+                OCCUPATION_RATE + " INTEGER NOT NULL," +
+                EMPLOYEE_TYPE + " TEXT NOT NULL);";
         db.execSQL(sql);
-        String sq2 = "CREATE TABLE " + TABLE_NAME2 + "(" +
-                model + " integer(200) NOT NULL, " +
-                plate + " String(200) NOT NULL, " +
-                color + " String(200) NOT NULL);";
-        db.execSQL(sq2);
+        String sql2 = "CREATE TABLE " + TABLE_NAME2 + "(" +
+                EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
+                Vehicle_Type +"varchar NOT NULL,"+
+                model + " INTEGER NOT NULL, " +
+                plate + " TEXT NOT NULL, " +
+                color + " TEXT NOT NULL);";
+        db.execSQL(sql2);
         String sq3 = "CREATE TABLE " + TABLE_NAME3 + "(" +
-                type + " String(200) NOT NULL);";
+                EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
+                type + " TEXT NOT NULL);";
         db.execSQL(sq3);
         String sq4 = "CREATE TABLE " + TABLE_NAME4 + "(" +
-                sideCar + " String(200) NOT NULL);";
+                EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
+                sideCar + " TEXT NOT NULL);";
         db.execSQL(sq4);
         String sq5 = "CREATE TABLE " + TABLE_NAME5 + "(" +
-                nbProjects + " integer(200) NOT NULL);";
+                EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
+                nbProjects + " INTEGER NOT NULL);";
         db.execSQL(sq5);
         String sq6 = "CREATE TABLE " + TABLE_NAME6 + "(" +
-                nbClients + " integer NOT NULL);";
+                EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
+                nbClients + " INTEGER NOT NULL);";
         db.execSQL(sq6);
         String sq7 = "CREATE TABLE " + TABLE_NAME7 + "(" +
-                nbBugs + " int(200) NOT NULL);";
+                EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
+                nbBugs + " INTEGER NOT NULL);";
         db.execSQL(sq7);
     }
     catch( Exception e){
-            Log.e("dbAdapter", e.getMessage().toString());
+            Log.e("dbAdapter", e.getMessage());
         }
 
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
     {
-
+        String sql1 = "DROP TABLE IF EXISTS " + TABLE_NAME1 + ";";
+        db.execSQL(sql1);
+        String sql2 = "DROP TABLE IF EXISTS " + TABLE_NAME2 + ";";
+        db.execSQL(sql2);
+        String sql3 = "DROP TABLE IF EXISTS " + TABLE_NAME3 + ";";
+        db.execSQL(sql3);
+        String sql4 = "DROP TABLE IF EXISTS " + TABLE_NAME4 + ";";
+        db.execSQL(sql4);
+        String sql5 = "DROP TABLE IF EXISTS " + TABLE_NAME5 + ";";
+        db.execSQL(sql5);
+        String sql6 = "DROP TABLE IF EXISTS " + TABLE_NAME6 + ";";
+        db.execSQL(sql6);
+        String sql7 = "DROP TABLE IF EXISTS " + TABLE_NAME7 + ";";
+        db.execSQL(sql7);
+        onCreate(db);
 
     }
+    boolean addEmployee(String fname, String lname, int byear, double asalary, int oRate, int eid, String etype) {
+        //, int clients, int bugs, int projects, String vType, String cType, String sCar, String joiningDate, double salary) {
 
+        // in order to insert items into database, we need a writable database
+        // this method returns a SQLite database instance
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
+        // we need to define a contentValues instance
+        ContentValues cv = new ContentValues();
 
+        // the first argument of the put method is the column name and the second the value
+        cv.put(FIRST_NAME, fname);
+        cv.put(LAST_NAME, lname);
+        cv.put(BIRTH_YEAR, String.valueOf(byear));
+        cv.put(MONTHLY_SALARY, String.valueOf(asalary));
+        cv.put(OCCUPATION_RATE, String.valueOf(oRate));
+        cv.put(EmployeeID, String.valueOf(eid));
+        cv.put(EMPLOYEE_TYPE, etype);
 
+        // the insert method returns row number if the insertion is successful and -1 if unsuccessful
+        return sqLiteDatabase.insert(TABLE_NAME1, null, cv) != -1;
+    }
+    boolean addVehicle(int eid,String vType, int vModel,String vPlate, String vColor){
 
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
+        ContentValues cv = new ContentValues();
 
+        cv.put(Vehicle_Type, vType);
+        cv.put(plate, vPlate);
+        cv.put(model, String.valueOf(vModel));
+        cv.put(EmployeeID, String.valueOf(eid));
+        cv.put(color, vColor);
+        return sqLiteDatabase.insert(TABLE_NAME2, null, cv) != -1;
+    }
+
+    boolean addCar(int eId, String cType){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(type, cType);
+
+        return sqLiteDatabase.insert(TABLE_NAME3, null, cv) != -1;
+    }
+    boolean addMotorcycle(int eId, String sCar){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(sideCar, sCar);
+
+        return sqLiteDatabase.insert(TABLE_NAME4, null, cv) != -1;
+    }
+    boolean programmer(int eId, int projects){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(nbClients, projects);
+
+        return sqLiteDatabase.insert(TABLE_NAME5, null, cv) != -1;
+    }
+    boolean manager(int eId, int clients){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(nbClients, clients);
+
+        return sqLiteDatabase.insert(TABLE_NAME6, null, cv) != -1;
+    }
+    boolean tester(int eId, int bugs){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(nbBugs, bugs);
+
+        return sqLiteDatabase.insert(TABLE_NAME7, null, cv) != -1;
+    }
 }
