@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -12,6 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Calendar;
+
 
 public class RegisterEmployee extends AppCompatActivity{
 
@@ -26,7 +28,6 @@ public class RegisterEmployee extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_employee);
-
         firstName = findViewById(R.id.firstNameText);
         lastName = findViewById(R.id.lastNameText);
         birthYear= findViewById(R.id.birthYearText);
@@ -67,7 +68,6 @@ public class RegisterEmployee extends AppCompatActivity{
         String fName ="";
         if(!firstName.getText().toString().isEmpty())
         fName = firstName.getText().toString().trim();
-
         String lName = lastName.getText().toString().trim();
         if (lName.isEmpty()) {
             lastName.setError("Required!");
@@ -189,6 +189,8 @@ public class RegisterEmployee extends AppCompatActivity{
         String sidecar="";
         if(motorcycleRadioBtn.isChecked())
          {
+             sideCarLabel.setVisibility(view.VISIBLE);
+             sideCarRadioGroup.setVisibility(view.VISIBLE);
              if(!sidecarNoRadioBtn.isChecked()&&!sidecarYesRadioBtn.isChecked()){
                  Toast.makeText(this, "select Yes or No for sidecar!", Toast.LENGTH_SHORT).show();
                  sideCarRadioGroup.requestFocus();
