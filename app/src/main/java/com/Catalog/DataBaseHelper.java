@@ -128,9 +128,9 @@ public  class DataBaseHelper extends SQLiteOpenHelper
         cv.put(FIRST_NAME, fname);
         cv.put(LAST_NAME, lname);
         cv.put(BIRTH_YEAR, String.valueOf(byear));
-        cv.put(MONTHLY_SALARY, String.valueOf(asalary));
-        cv.put(OCCUPATION_RATE, String.valueOf(oRate));
-        cv.put(EmployeeID, String.valueOf(eid));
+        cv.put(MONTHLY_SALARY,asalary);
+        cv.put(OCCUPATION_RATE, oRate);
+        cv.put(EmployeeID, eid);
         cv.put(EMPLOYEE_TYPE, etype);
 
         // the insert method returns row number if the insertion is successful and -1 if unsuccessful
@@ -142,9 +142,9 @@ public  class DataBaseHelper extends SQLiteOpenHelper
         ContentValues cv = new ContentValues();
         cv.put(FIRST_NAME, fname);
         cv.put(LAST_NAME, lname);
-        cv.put(EmployeeID, String.valueOf(eid));
+        cv.put(EmployeeID, eid);
 
-        return sqLiteDatabase.insert(TABLE_NAME1, null, cv) != -1;
+        return sqLiteDatabase.insert(TABLE_NAME8, null, cv) != -1;
     }
     boolean addVehicle(int eid,String vType, int vModel,String vPlate, String vColor){
 

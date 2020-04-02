@@ -123,10 +123,10 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-    private void addEmployee(){
-        String fName ="";
-        if(!firstName.getText().toString().isEmpty())
-        fName = firstName.getText().toString().trim();
+    private void addEmployee() {
+        String fName = "";
+        if (!firstName.getText().toString().isEmpty())
+            fName = firstName.getText().toString().trim();
         String lName = lastName.getText().toString().trim();
         if (lName.isEmpty()) {
             lastName.setError("Required!");
@@ -139,8 +139,8 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             birthYear.requestFocus();
             return;
         }
-        int bYear= Integer.valueOf(birthYear.getText().toString());
-        if(bYear<1900 || bYear>2020 ){
+        int bYear = Integer.valueOf(birthYear.getText().toString());
+        if (bYear < 1900 || bYear > 2020) {
             birthYear.setError("Enter a valid Year!");
             birthYear.requestFocus();
             return;
@@ -155,18 +155,17 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         }
         double mSalary = Double.valueOf(monthlySalary.getText().toString());
 
-        int oRate= 100;
-        if(!occupationRate.getText().toString().isEmpty())
-        oRate = Integer.valueOf(occupationRate.getText().toString());
-        if(oRate>100){
-            oRate=100;
-        }
-        else if(oRate<10){
-            oRate=10;
+        int oRate = 100;
+        if (!occupationRate.getText().toString().isEmpty())
+            oRate = Integer.valueOf(occupationRate.getText().toString());
+        if (oRate > 100) {
+            oRate = 100;
+        } else if (oRate < 10) {
+            oRate = 10;
         }
         double aSalary = 12 * mSalary * oRate;
 
-        if(employeeID.getText().toString().isEmpty()){
+        if (employeeID.getText().toString().isEmpty()) {
             employeeID.setError("this field is mandatory!");
             employeeID.requestFocus();
             return;
@@ -180,83 +179,78 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         }
         String eType = employeeType.getSelectedItem().toString();
 
-        if(eType.equals("Manager"))
-        {
+        if (eType.equals("Manager")) {
             //let us suppose each manager travels for 24 days in a month
-            int gainFactorClient=500, gainFactorTravel=100, numberofDaysTravelled=24*12;
-            if(clients.getText().toString().isEmpty()){
+            int gainFactorClient = 500, gainFactorTravel = 100, numberofDaysTravelled = 24 * 12;
+            if (clients.getText().toString().isEmpty()) {
                 clients.setError("Enter clients made!");
                 clients.requestFocus();
                 return;
             }
-            int numberofclients=Integer.valueOf(clients.getText().toString());
-            aSalary = aSalary + ( gainFactorClient* numberofclients) +  gainFactorTravel*numberofDaysTravelled;
+            int numberofclients = Integer.valueOf(clients.getText().toString());
+            aSalary = aSalary + (gainFactorClient * numberofclients) + gainFactorTravel * numberofDaysTravelled;
 
         }
-        if(eType.equals("Tester"))
-        {
+        if (eType.equals("Tester")) {
             int gainFactorError = 10;
-            if(bugs.getText().toString().isEmpty()){
+            if (bugs.getText().toString().isEmpty()) {
                 bugs.setError("Enter bugs solved!");
                 bugs.requestFocus();
                 return;
             }
-            int numberofbugs=Integer.valueOf(bugs.getText().toString());
+            int numberofbugs = Integer.valueOf(bugs.getText().toString());
             aSalary = aSalary + gainFactorError * numberofbugs;
         }
-        if(eType.equals("Programmer")) {
+        if (eType.equals("Programmer")) {
             int gainFactorProjects = 200;
-            if(projects.getText().toString().isEmpty()){
+            if (projects.getText().toString().isEmpty()) {
                 projects.setError("Enter projects Completed!");
                 projects.requestFocus();
                 return;
             }
-            int numberofprojects=Integer.valueOf(projects.getText().toString());
+            int numberofprojects = Integer.valueOf(projects.getText().toString());
             aSalary = aSalary + gainFactorProjects * numberofprojects;
         }
-
-        if(!carRadioBtn.isChecked()&&!motorcycleRadioBtn.isChecked()){
+        String vehicle = "";
+        if (!carRadioBtn.isChecked() && !motorcycleRadioBtn.isChecked()) {
             Toast.makeText(this, "choose vehicle owned", Toast.LENGTH_SHORT).show();
             vehicleTypeRadioGroup.requestFocus();
             return;
         }
-        if(carRadioBtn.isChecked())
-         {
-             if (carTypeSpinner.getSelectedItem().toString().equals("Choose Type"))
-             {
-                 Toast.makeText(this, "choose Car Type", Toast.LENGTH_SHORT).show();
-                 carTypeSpinner.requestFocus();
-                 return;
-             }
+        if (carRadioBtn.isChecked()) {
+            if (carTypeSpinner.getSelectedItem().toString().equals("Choose Type")) {
+                Toast.makeText(this, "choose Car Type", Toast.LENGTH_SHORT).show();
+                carTypeSpinner.requestFocus();
+                return;
+            }
+            vehicle="Car";
             String cType = carTypeSpinner.getSelectedItem().toString();
-         }
-        String sidecar="";
-        if(motorcycleRadioBtn.isChecked())
-         {
-             if(!sidecarNoRadioBtn.isChecked()&&!sidecarYesRadioBtn.isChecked()){
-                 Toast.makeText(this, "select Yes or No for sidecar!", Toast.LENGTH_SHORT).show();
-                 sideCarRadioGroup.requestFocus();
-                 return;
-             }
-             if(sidecarNoRadioBtn.isChecked())
-                {
-                    //Employee has motorcycle without a Side Car
-                    sidecar="No";
-                }
-             if(sidecarYesRadioBtn.isChecked())
-                {
-                    //Employee has motorcycle with a Side Car
-                    sidecar = "Yes";
-                }
-         }
-        if(vehicleModel.getText().toString().isEmpty()){
+        }
+        String sidecar = "";
+        if (motorcycleRadioBtn.isChecked()) {
+            if (!sidecarNoRadioBtn.isChecked() && !sidecarYesRadioBtn.isChecked()) {
+                Toast.makeText(this, "select Yes or No for sidecar!", Toast.LENGTH_SHORT).show();
+                sideCarRadioGroup.requestFocus();
+                return;
+            }
+            vehicle="Motorcycle";
+            if (sidecarNoRadioBtn.isChecked()) {
+                //Employee has motorcycle without a Side Car
+                sidecar = "No";
+            }
+            if (sidecarYesRadioBtn.isChecked()) {
+                //Employee has motorcycle with a Side Car
+                sidecar = "Yes";
+            }
+        }
+        if (vehicleModel.getText().toString().isEmpty()) {
             vehicleModel.setError("Enter make year!");
             vehicleModel.requestFocus();
             return;
         }
-        int vModel= Integer.valueOf(vehicleModel.getText().toString());
+        int vModel = Integer.valueOf(vehicleModel.getText().toString());
 
-        if(plateNumber.getText().toString().isEmpty()){
+        if (plateNumber.getText().toString().isEmpty()) {
             plateNumber.setError("enter vehicle plate!");
             plateNumber.requestFocus();
             return;
@@ -270,6 +264,10 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         }
         String vColor = vehicleColorSpinner.getSelectedItem().toString().trim();
 
+        if (mDatabase.allEmployees(fName, lName,empId)) {
+            Toast.makeText(this, "Employee added", Toast.LENGTH_SHORT).show();
+        } else
+            Toast.makeText(this, "Employee not added", Toast.LENGTH_SHORT).show();
     }
     @Override
     protected void onRestart() {
