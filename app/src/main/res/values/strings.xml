@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">Catalog</string>
-    <string-array name="employeeType">
+    <string-array name="employeeTypeArray">
         <item>Choose a Type</item>
         <item>Manager</item>
         <item>Tester</item>

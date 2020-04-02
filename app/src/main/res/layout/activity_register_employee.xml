@@ -189,7 +189,7 @@
                 android:layout_height="27dp"
                 android:layout_marginTop="14dp"
                 android:layout_marginEnd="8dp"
-                android:entries="@array/employeeType"
+                android:entries="@array/employeeTypeArray"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/employeeIDText" />
 

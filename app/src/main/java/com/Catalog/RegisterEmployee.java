@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,9 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Calendar;
+import java.util.Objects;
 
 
-public class RegisterEmployee extends AppCompatActivity{
+public class RegisterEmployee extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     EditText firstName,lastName,birthYear,monthlySalary,occupationRate,employeeID,projects,clients,
     bugs,vehicleModel,plateNumber;
@@ -57,14 +59,47 @@ public class RegisterEmployee extends AppCompatActivity{
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                addEmployee(v);
+            public void onClick(View view) {
+                addEmployee();
             }
         });
 
+        employeeType.setOnItemSelectedListener(this);
     }
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-    private void addEmployee(View view){
+                if (employeeType.getSelectedItem().toString().equals("Manager")) {
+                    clientsLabel.setVisibility(view.VISIBLE);
+                    clients.setVisibility(view.VISIBLE);
+                    bugsLabel.setVisibility(view.GONE);
+                    bugs.setVisibility(view.GONE);
+                    projectsLabel.setVisibility(view.GONE);
+                    projects.setVisibility(view.GONE);
+                }
+                if (employeeType.getSelectedItem().toString().equals("Tester")) {
+                    bugsLabel.setVisibility(view.VISIBLE);
+                    bugs.setVisibility(view.VISIBLE);
+                    projectsLabel.setVisibility(view.GONE);
+                    projects.setVisibility(view.GONE);
+                    clientsLabel.setVisibility(view.GONE);
+                    clients.setVisibility(view.GONE);
+                }
+                if (employeeType.getSelectedItem().toString().equals("Programmer")) {
+                    projectsLabel.setVisibility(view.VISIBLE);
+                    projects.setVisibility(view.VISIBLE);
+                    clientsLabel.setVisibility(view.GONE);
+                    clients.setVisibility(view.GONE);
+                    bugsLabel.setVisibility(view.GONE);
+                    bugs.setVisibility(view.GONE);
+                }
+
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+    private void addEmployee(){
         String fName ="";
         if(!firstName.getText().toString().isEmpty())
         fName = firstName.getText().toString().trim();
@@ -119,21 +154,8 @@ public class RegisterEmployee extends AppCompatActivity{
             employeeType.requestFocus();
             return;
         }
-
         String eType = employeeType.getSelectedItem().toString();
-        if(eType.equals("Manager")){
-            clientsLabel.setVisibility(view.VISIBLE);
-            clients.setVisibility(view.VISIBLE);
-        }
-        if(eType.equals("Tester"))
-        {
-            bugsLabel.setVisibility(view.VISIBLE);
-            bugs.setVisibility(view.VISIBLE);
-        }
-        if(eType.equals("Programmer")) {
-            projectsLabel.setVisibility(view.VISIBLE);
-            projects.setVisibility(view.VISIBLE);
-        }
+
         if(eType.equals("Manager"))
         {
             //let us suppose each manager travels for 24 days in a month
@@ -176,8 +198,6 @@ public class RegisterEmployee extends AppCompatActivity{
         }
         if(carRadioBtn.isChecked())
          {
-             carTypeLabel.setVisibility(view.VISIBLE);
-             carTypeSpinner.setVisibility(view.VISIBLE);
              if (carTypeSpinner.getSelectedItem().toString().equals("Choose Type"))
              {
                  Toast.makeText(this, "choose Car Type", Toast.LENGTH_SHORT).show();
@@ -189,8 +209,6 @@ public class RegisterEmployee extends AppCompatActivity{
         String sidecar="";
         if(motorcycleRadioBtn.isChecked())
          {
-             sideCarLabel.setVisibility(view.VISIBLE);
-             sideCarRadioGroup.setVisibility(view.VISIBLE);
              if(!sidecarNoRadioBtn.isChecked()&&!sidecarYesRadioBtn.isChecked()){
                  Toast.makeText(this, "select Yes or No for sidecar!", Toast.LENGTH_SHORT).show();
                  sideCarRadioGroup.requestFocus();
@@ -252,5 +270,6 @@ public class RegisterEmployee extends AppCompatActivity{
         sidecarYesRadioBtn.setChecked(false);
         sidecarNoRadioBtn.setChecked(false);
     }
+
 
 }
