@@ -1,11 +1,9 @@
 package com.Catalog;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -14,7 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Calendar;
-import java.util.Objects;
+
 
 
 public class RegisterEmployee extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -63,7 +61,28 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 addEmployee();
             }
         });
-
+        carRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(carRadioBtn.isChecked()){
+                    carTypeLabel.setVisibility(view.VISIBLE);
+                    carTypeSpinner.setVisibility(view.VISIBLE);
+                    sideCarLabel.setVisibility(view.GONE);
+                    sideCarRadioGroup.setVisibility(view.GONE);
+                }
+            }
+        });
+        motorcycleRadioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                 if(motorcycleRadioBtn.isChecked()){
+                    sideCarLabel.setVisibility(view.VISIBLE);
+                    sideCarRadioGroup.setVisibility(view.VISIBLE);
+                     carTypeLabel.setVisibility(view.GONE);
+                     carTypeSpinner.setVisibility(view.GONE);
+                }
+            }
+        });
         employeeType.setOnItemSelectedListener(this);
     }
     @Override
