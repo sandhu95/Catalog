@@ -17,6 +17,8 @@ import java.util.Calendar;
 
 public class RegisterEmployee extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    DataBaseHelper mDatabase;
+
     EditText firstName,lastName,birthYear,monthlySalary,occupationRate,employeeID,projects,clients,
     bugs,vehicleModel,plateNumber;
     TextView clientsLabel, bugsLabel, projectsLabel, sideCarLabel,carTypeLabel;
@@ -24,6 +26,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
     RadioGroup vehicleTypeRadioGroup,sideCarRadioGroup;
     RadioButton  carRadioBtn,motorcycleRadioBtn,sidecarYesRadioBtn,sidecarNoRadioBtn;
     Button registerButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +87,8 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             }
         });
         employeeType.setOnItemSelectedListener(this);
+
+        mDatabase = new DataBaseHelper(this);
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

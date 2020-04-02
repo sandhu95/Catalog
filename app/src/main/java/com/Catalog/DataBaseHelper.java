@@ -1,5 +1,6 @@
 package com.Catalog;
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -36,6 +37,7 @@ public  class DataBaseHelper extends SQLiteOpenHelper
         private static final String nbClients = "";
         private static final String TABLE_NAME7 = "Tester";
         private static final String nbBugs= "";
+        private static final String TABLE_NAME8 = "AllEmployees";
 
 
 
@@ -82,6 +84,11 @@ public  class DataBaseHelper extends SQLiteOpenHelper
                 EmployeeID +"INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY,"+
                 nbBugs + " INTEGER NOT NULL);";
         db.execSQL(sq7);
+        String sql8 = "CREATE TABLE " + TABLE_NAME8 + "(" +
+                EmployeeID + " INTEGER NOT NULL CONSTRAINT employee_pk PRIMARY KEY, " +
+                FIRST_NAME + " TEXT NOT NULL, " +
+                LAST_NAME + " TEXT NOT NULL);";
+        db.execSQL(sql8);
     }
     catch( Exception e){
             Log.e("dbAdapter", e.getMessage());
@@ -109,7 +116,6 @@ public  class DataBaseHelper extends SQLiteOpenHelper
 
     }
     boolean addEmployee(String fname, String lname, int byear, double asalary, int oRate, int eid, String etype) {
-        //, int clients, int bugs, int projects, String vType, String cType, String sCar, String joiningDate, double salary) {
 
         // in order to insert items into database, we need a writable database
         // this method returns a SQLite database instance
@@ -128,6 +134,16 @@ public  class DataBaseHelper extends SQLiteOpenHelper
         cv.put(EMPLOYEE_TYPE, etype);
 
         // the insert method returns row number if the insertion is successful and -1 if unsuccessful
+        return sqLiteDatabase.insert(TABLE_NAME1, null, cv) != -1;
+    }
+    boolean allEmployees(String fname, String lname,int eid){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+        cv.put(FIRST_NAME, fname);
+        cv.put(LAST_NAME, lname);
+        cv.put(EmployeeID, String.valueOf(eid));
+
         return sqLiteDatabase.insert(TABLE_NAME1, null, cv) != -1;
     }
     boolean addVehicle(int eid,String vType, int vModel,String vPlate, String vColor){
@@ -193,5 +209,9 @@ public  class DataBaseHelper extends SQLiteOpenHelper
         cv.put(nbBugs, bugs);
 
         return sqLiteDatabase.insert(TABLE_NAME7, null, cv) != -1;
+    }
+    Cursor getAllEmployees() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8+";", null);
     }
 }
