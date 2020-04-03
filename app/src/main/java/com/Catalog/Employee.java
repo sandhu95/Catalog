@@ -3,11 +3,20 @@ package com.Catalog;
 public class Employee {
         private String fname;
         private String lname;
-        private int age;
         private int birthYear;
         private double monthlySalary;
         private int eId;
         private int rate;
+
+        public String geteType() {
+                return eType;
+        }
+
+        public void seteType(String eType) {
+                this.eType = eType;
+        }
+
+        private  String eType;
 
 
         public int geteId() {
@@ -24,12 +33,7 @@ public class Employee {
         public void setlName(String lname) {
                 this.lname = lname;
         }
-        public int getAge() {
-                return age;
-        }
-        public void setAge(int age) {
-                this.age = age;
-        }
+
         public int getBirthYear() {
                 return birthYear;
         }
@@ -49,15 +53,15 @@ public class Employee {
                 this.rate = rate;
         }
 
-        public Employee(String fname,String lname,int age,int birthYear,double monthlySalary,int rate) {
+        public Employee(String fname,String lname,int birthYear,double monthlySalary,int rate,int eId,String eType) {
                 super();
                 this.eId=eId;
-                this.age = age;
                 this.fname=fname;
                 this.lname=lname;
                 this.birthYear=birthYear;
                 this.monthlySalary=monthlySalary;
                 this.rate=rate;
+                this.eType=eType;
         }
         public Employee(int eId, String fname,String lname) {
                 this.fname=fname;

@@ -10,8 +10,8 @@ public class Tester extends Employee {
         this.nbBugs = nbBugs;
     }
 
-    public Tester(String fname, String lname, int age, int birthYear, double monthlySalary, int rate, int nbBugs) {
-        super(fname, lname, age, birthYear, monthlySalary, rate);
+    public Tester(String fname, String lname, int birthYear, double monthlySalary, int rate, int eId, String eType, int nbBugs) {
+        super(fname, lname, birthYear, monthlySalary, rate, eId, eType);
         this.nbBugs = nbBugs;
     }
 }

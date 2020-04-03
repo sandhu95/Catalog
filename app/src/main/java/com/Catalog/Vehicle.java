@@ -5,12 +5,23 @@ public class Vehicle {
         private int model;
         private String plate;
         private String color;
+        private String vType;
+    public String getvType() {
+        return vType;
+    }
 
-    public Vehicle(int eId,int model,String plate,String color) {
+    public void setvType(String vType) {
+        this.vType = vType;
+    }
+
+
+
+    public Vehicle(int eId,String plate,int model,String color,String vType) {
         this.eId = eId;
         this.model=model;
         this.plate=plate;
         this.color=color;
+        this.vType=vType;
     }
 
     public int geteId() {

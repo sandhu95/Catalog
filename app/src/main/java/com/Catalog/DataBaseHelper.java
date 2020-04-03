@@ -210,8 +210,37 @@ public  class DataBaseHelper extends SQLiteOpenHelper
 
         return sqLiteDatabase.insert(TABLE_NAME7, null, cv) != -1;
     }
+    Cursor getEmployees() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME1, null);
+    }
+    Cursor getVehicle() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2, null);
+    }
+    Cursor getCar() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME3, null);
+    }
+    Cursor getMotorcycle() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME4, null);
+    }
+    Cursor getProgrammer() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME5, null);
+    }
+    Cursor getManager() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME6, null);
+    }
+    Cursor getTester() {
+        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME7, null);
+    }
     Cursor getAllEmployees() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8, null);
     }
+
 }
