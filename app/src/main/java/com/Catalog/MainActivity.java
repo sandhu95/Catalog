@@ -13,8 +13,8 @@ import java.util.List;
 public class
 MainActivity extends AppCompatActivity
 {
-    private static final String TAG = "EmployeeActivity";
-    DataBaseHelper Database;
+    private static final String TAG = "MainActivity";
+    DataBaseHelper DATABASE_NAME;
     List<Employee> employeeList;
     ListView listView;
 
@@ -24,7 +24,7 @@ MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         listView = findViewById(R.id.listview);
         employeeList = new ArrayList<>();
-        Database = new DataBaseHelper(this);
+        DATABASE_NAME = new DataBaseHelper(this);
 
     }
     public void addEmployee(View view){
