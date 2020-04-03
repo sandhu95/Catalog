@@ -2,6 +2,7 @@ package com.Catalog;
 
 public class Car extends Vehicle
 {
+
     private String type;
     public String getType() {
         return type;
@@ -10,10 +11,8 @@ public class Car extends Vehicle
         this.type = type;
     }
 
-    public Car(int model, String plate, String color, String type)
-    {
-        super(model, plate, color);
+    public Car(int eId, int model, String plate, String color, String type) {
+        super(eId, model, plate, color);
         this.type = type;
-
     }
 }

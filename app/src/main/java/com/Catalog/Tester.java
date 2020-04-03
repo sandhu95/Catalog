@@ -9,8 +9,9 @@ public class Tester extends Employee {
     public void setNbBugs(int nbBugs) {
         this.nbBugs = nbBugs;
     }
-    public Tester(int nbBugs,String name,int age,int birthYear,double monthlySalary,int rate) {
-        super(name,age,birthYear,monthlySalary,rate);
+
+    public Tester(String fname, String lname, int age, int birthYear, double monthlySalary, int rate, int nbBugs) {
+        super(fname, lname, age, birthYear, monthlySalary, rate);
         this.nbBugs = nbBugs;
     }
 }

@@ -3,32 +3,46 @@ package com.Catalog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 import java.util.List;
+import  java.lang.String;
 
-public class
-MainActivity extends AppCompatActivity
-{
+
+public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     DataBaseHelper DATABASE_NAME;
     List<Employee> employeeList;
-    ListView listView;
+    List<Employee> vehicleList;
+    List<Employee> carList;
+    List<Employee> motorcycleList;
+    List<Employee> programmerList;
+    List<Employee> managerList;
+    List<Employee> testerList;
+    List<Employee> allEmployeestesterList;
+    ListView listViewEmployee;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        listView = findViewById(R.id.listview);
+        listViewEmployee = findViewById(R.id.listview);
         employeeList = new ArrayList<>();
-        DATABASE_NAME = new DataBaseHelper(this);
+        vehicleList = new ArrayList<>();
+        carList = new ArrayList<>();
+        motorcycleList = new ArrayList<>();
+        programmerList = new ArrayList<>();
+        managerList = new ArrayList<>();
+        testerList = new ArrayList<>();
+        allEmployeestesterList = new ArrayList<>();
 
-    }
-    public void addEmployee(View view){
-        Intent intent = new Intent(this, RegisterEmployee.class);
-        startActivity(intent);
+        DATABASE_NAME = new DataBaseHelper(this);
     }
 }
+
+
+

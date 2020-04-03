@@ -212,6 +212,6 @@ public  class DataBaseHelper extends SQLiteOpenHelper
     }
     Cursor getAllEmployees() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8+";", null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8, null);
     }
 }

@@ -1,16 +1,28 @@
 package com.Catalog;
 
 public class Employee {
-        private String name;
+        private String fname;
+        private String lname;
         private int age;
         private int birthYear;
         private double monthlySalary;
+        private int eId;
         private int rate;
-        public String getName() {
-                return name;
+
+
+        public int geteId() {
+                return eId;
         }
-        public void setName(String name) {
-                this.name = name;
+        public void seteId(int eId) { this.eId = eId; }
+        public String getfName() { return fname; }
+        public String getlName() {
+                return lname;
+        }
+        public void setfName(String fname) {
+                this.fname = fname;
+        }
+        public void setlName(String lname) {
+                this.lname = lname;
         }
         public int getAge() {
                 return age;
@@ -37,13 +49,20 @@ public class Employee {
                 this.rate = rate;
         }
 
-        public Employee(String name,int age,int birthYear,double monthlySalary,int rate) {
+        public Employee(String fname,String lname,int age,int birthYear,double monthlySalary,int rate) {
                 super();
+                this.eId=eId;
                 this.age = age;
-                this.name=name;
+                this.fname=fname;
+                this.lname=lname;
                 this.birthYear=birthYear;
                 this.monthlySalary=monthlySalary;
                 this.rate=rate;
+        }
+        public Employee(int eId, String fname,String lname) {
+                this.fname=fname;
+                this.lname=lname;
+                this.eId = eId;
         }
 
 }
