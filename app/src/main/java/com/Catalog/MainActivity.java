@@ -41,8 +41,32 @@ public class MainActivity extends AppCompatActivity {
         allEmployeestesterList = new ArrayList<>();
 
         DATABASE_NAME = new DataBaseHelper(this);
+        loadEmployees();
+
     }
-}
+
+    private void loadEmployees() {
+
+        Cursor cursor = DATABASE_NAME.getAllEmployees();
+
+        if (cursor.moveToFirst()) {
+            do {
+                employeeList.add(new Employee(
+                        cursor.getInt(0),
+                        cursor.getString(1),
+                        cursor.getString(2)
+                ));
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
+
+    }
+        public void addEmployee (View view){
+            Intent intent = new Intent(this, RegisterEmployee.class);
+            startActivity(intent);
+        }
+    }
+
 
 
 
