@@ -14,7 +14,7 @@ import  java.lang.String;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-    DataBaseHelper DATABASE_NAME;
+    DataBaseHelper myDatabase;
     List<Employee> employeeList;
     List<Vehicle> vehicleList;
     List<Car> carList;
@@ -40,14 +40,14 @@ public class MainActivity extends AppCompatActivity {
         testerList = new ArrayList<>();
         allEmployeestesterList = new ArrayList<>();
 
-        DATABASE_NAME = new DataBaseHelper(this);
+        myDatabase = new DataBaseHelper(this);
         loadEmployees();
 
     }
 
     private void loadEmployees() {
 
-        Cursor cursor1 = DATABASE_NAME.getEmployees();
+        Cursor cursor1 = myDatabase.getEmployees();
 
         if (cursor1.moveToFirst()) {
             do {
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             cursor1.close();
         }
 
-        Cursor cursor2 = DATABASE_NAME.getVehicle();
+        Cursor cursor2 = myDatabase.getVehicle();
 
         if (cursor2.moveToFirst()) {
             do {
@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
             } while (cursor2.moveToNext());
             cursor2.close();
         }
-        Cursor cursor3 = DATABASE_NAME.getCar();
+        Cursor cursor3 = myDatabase.getCar();
 
         if (cursor3.moveToFirst()) {
             do {
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             cursor3.close();
         }
 
-        Cursor cursor4 = DATABASE_NAME.getMotorcycle();
+        Cursor cursor4 = myDatabase.getMotorcycle();
 
         if (cursor4.moveToFirst()) {
             do {
@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             cursor4.close();
         }
 
-        Cursor cursor5 = DATABASE_NAME.getProgrammer();
+        Cursor cursor5 = myDatabase.getProgrammer();
 
         if (cursor5.moveToFirst()) {
             do {
@@ -128,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
             cursor5.close();
         }
 
-        Cursor cursor6 = DATABASE_NAME.getManager();
+        Cursor cursor6 = myDatabase.getManager();
 
         if (cursor6.moveToFirst()) {
             do {
@@ -146,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
             cursor6.close();
         }
 
-        Cursor cursor7 = DATABASE_NAME.getTester();
+        Cursor cursor7 = myDatabase.getTester();
 
         if (cursor7.moveToFirst()) {
             do {
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
             cursor7.close();
         }
 
-        Cursor cursor8 = DATABASE_NAME.getAllEmployees();
+        Cursor cursor8 = myDatabase.getAllEmployees();
 
         if (cursor8.moveToFirst()) {
             do {
@@ -176,7 +176,6 @@ public class MainActivity extends AppCompatActivity {
             } while (cursor8.moveToNext());
             cursor8.close();
         }
-
 
     }
         public void addEmployee (View view){

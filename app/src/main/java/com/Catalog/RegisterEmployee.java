@@ -31,6 +31,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_employee);
+
         firstName = findViewById(R.id.firstNameText);
         lastName = findViewById(R.id.lastNameText);
         birthYear= findViewById(R.id.birthYearText);
@@ -124,15 +125,16 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
 
     }
     private void addEmployee() {
-        String fName = "";
+        String fName = "N/A";
         if (!firstName.getText().toString().isEmpty())
             fName = firstName.getText().toString().trim();
-        String lName = lastName.getText().toString().trim();
-        if (lName.isEmpty()) {
+        String lName="";
+        if (lastName.getText().toString().isEmpty()) {
             lastName.setError("Required!");
             lastName.requestFocus();
             return;
         }
+        lName = lastName.getText().toString().trim();
 
         if (birthYear.getText().toString().isEmpty()) {
             birthYear.setError("Birth Year can not be Empty!");
@@ -178,7 +180,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             return;
         }
         String eType = employeeType.getSelectedItem().toString();
-
+        int numberofclients=0;
         if (eType.equals("Manager")) {
             //let us suppose each manager travels for 24 days in a month
             int gainFactorClient = 500, gainFactorTravel = 100, numberofDaysTravelled = 24 * 12;
@@ -187,10 +189,11 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 clients.requestFocus();
                 return;
             }
-            int numberofclients = Integer.valueOf(clients.getText().toString());
+            numberofclients = Integer.valueOf(clients.getText().toString());
             aSalary = aSalary + (gainFactorClient * numberofclients) + gainFactorTravel * numberofDaysTravelled;
 
         }
+        int numberofbugs=0;
         if (eType.equals("Tester")) {
             int gainFactorError = 10;
             if (bugs.getText().toString().isEmpty()) {
@@ -198,9 +201,10 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 bugs.requestFocus();
                 return;
             }
-            int numberofbugs = Integer.valueOf(bugs.getText().toString());
+            numberofbugs = Integer.valueOf(bugs.getText().toString());
             aSalary = aSalary + gainFactorError * numberofbugs;
         }
+        int numberofprojects=0;
         if (eType.equals("Programmer")) {
             int gainFactorProjects = 200;
             if (projects.getText().toString().isEmpty()) {
@@ -208,10 +212,11 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 projects.requestFocus();
                 return;
             }
-            int numberofprojects = Integer.valueOf(projects.getText().toString());
+            numberofprojects = Integer.valueOf(projects.getText().toString());
             aSalary = aSalary + gainFactorProjects * numberofprojects;
         }
         String vehicle = "";
+        String cType ="";
         if (!carRadioBtn.isChecked() && !motorcycleRadioBtn.isChecked()) {
             Toast.makeText(this, "choose vehicle owned", Toast.LENGTH_SHORT).show();
             vehicleTypeRadioGroup.requestFocus();
@@ -224,7 +229,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 return;
             }
             vehicle="Car";
-            String cType = carTypeSpinner.getSelectedItem().toString();
+            cType = carTypeSpinner.getSelectedItem().toString();
         }
         String sidecar = "";
         if (motorcycleRadioBtn.isChecked()) {
@@ -264,7 +269,13 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         }
         String vColor = vehicleColorSpinner.getSelectedItem().toString().trim();
 
-        if (mDatabase.allEmployees(fName, lName,empId)) {
+        if (mDatabase.allEmployees(empId,fName,lName)
+                &&mDatabase.addEmployee(empId,fName,lName,empAge,aSalary,oRate,eType)
+                &&(mDatabase.addMotorcycle(empId,sidecar)||mDatabase.addCar(empId,cType))
+                &&mDatabase.addVehicle(empId,vehicle,vModel,pNumber,vColor)
+                &&(mDatabase.addTester(empId,numberofbugs)
+                ||mDatabase.addManager(empId,numberofclients)
+                ||mDatabase.addProgrammer(empId, numberofprojects))) {
             Toast.makeText(this, "Employee added", Toast.LENGTH_SHORT).show();
         } else
             Toast.makeText(this, "Employee not added", Toast.LENGTH_SHORT).show();
