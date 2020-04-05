@@ -293,7 +293,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
     }
     Cursor getCar() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME3, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME3, null);
     }
     Cursor getMotorcycle() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();

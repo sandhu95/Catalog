@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             } while (cursor1.moveToNext());
             cursor1.close();
         }
-
+/*
         Cursor cursor2 = myDatabase.getVehicle();
 
         if (cursor2.moveToFirst()) {
@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity {
             } while (cursor2.moveToNext());
             cursor2.close();
         }
+
         Cursor cursor3 = myDatabase.getCar();
 
         if (cursor3.moveToFirst()) {
@@ -93,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             } while (cursor3.moveToNext());
             cursor3.close();
         }
-
         Cursor cursor4 = myDatabase.getMotorcycle();
 
         if (cursor4.moveToFirst()) {
@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             } while (cursor8.moveToNext());
             cursor8.close();
         }
-
+*/
     }
         public void addEmployee (View view){
             Intent intent = new Intent(this, RegisterEmployee.class);
