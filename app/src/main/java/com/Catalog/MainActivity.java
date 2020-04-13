@@ -51,6 +51,16 @@ public class MainActivity extends AppCompatActivity {
         EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, employeeList, myDatabase);
         listViewEmployee.setAdapter(employeeAdapter);
         employeeAdapter.notifyDataSetChanged();
+        listViewEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int empid = employeeList.get(position).geteId();
+                Intent intent = new Intent(MainActivity.this, Employ_info.class);
+                intent.putExtra("takeId", empid);
+                startActivity(intent);
+
+            }
+        });
 
 /*
         }
