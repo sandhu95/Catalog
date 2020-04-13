@@ -1,6 +1,7 @@
 package com.Catalog;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,16 +22,16 @@ public class EmployeeAdapter extends ArrayAdapter {
     public EmployeeAdapter(Context mContext, int layoutRes, List<Employee> employees,DataBaseHelper mDatabase)
     {
         super(mContext, layoutRes, employees);
-        this.mContext = mContext;
-        this.layoutRes = layoutRes;
-        this.employees =  employees;
-        this.mDatabase = mDatabase;
+         this.mContext = mContext;
+         this.layoutRes = layoutRes;
+         this.employees =  employees;
+         this.mDatabase = mDatabase;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        LayoutInflater inflater = LayoutInflater.from(mContext);
+       LayoutInflater inflater = LayoutInflater.from(mContext);
         View v = inflater.inflate(layoutRes, null);
         TextView firstName = v.findViewById(R.id.list_fname);
         TextView lastName= v.findViewById(R.id.list_lname);
@@ -41,7 +42,7 @@ public class EmployeeAdapter extends ArrayAdapter {
         lastName.setText(String.valueOf(employee.getlName()));
         idInList.setText(employee.geteId()+"");
 
-        return v;
+       return v;
     }
 
 }

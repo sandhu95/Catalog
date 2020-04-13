@@ -91,6 +91,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
 
         mDatabase = new DataBaseHelper(this);
     }
+
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
@@ -270,7 +271,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         String vColor = vehicleColorSpinner.getSelectedItem().toString().trim();
 
         if (mDatabase.allEmployees(empId,fName,lName)
-                &&mDatabase.addEmployee(empId,fName,lName,empAge,aSalary,oRate,eType)
+                && mDatabase.addEmployee(empId,fName,lName,empAge,aSalary,oRate,eType)
                 &&(mDatabase.addMotorcycle(empId,sidecar)||mDatabase.addCar(empId,cType))
                 &&mDatabase.addVehicle(empId,vehicle,vModel,pNumber,vColor)
                 &&(mDatabase.addTester(empId,numberofbugs)

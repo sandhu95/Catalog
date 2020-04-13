@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:onClick="addEmployee"
+        android:onClick="registerEmployee"
         android:text="Add New Employee"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

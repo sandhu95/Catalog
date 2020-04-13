@@ -4,7 +4,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import androidx.annotation.Nullable;
 
 
@@ -177,7 +176,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
-        cv.put(EmployeeID, String.valueOf(eid));
+        cv.put(EmployeeID, eid);
         cv.put(FIRST_NAME, fname);
         cv.put(LAST_NAME, lname);
 
@@ -197,10 +196,10 @@ public class DataBaseHelper extends SQLiteOpenHelper
         // the first argument of the put method is the column name and the second the value
         cv.put(FIRST_NAME, fname);
         cv.put(LAST_NAME, lname);
-        cv.put(AGE, String.valueOf(age));
-        cv.put(MONTHLY_SALARY,String.valueOf(asalary));
+        cv.put(AGE, age);
+        cv.put(MONTHLY_SALARY,asalary);
         cv.put(OCCUPATION_RATE, oRate);
-        cv.put(EmployeeID, String.valueOf(eid));
+        cv.put(EmployeeID, eid);
         cv.put(EMPLOYEE_TYPE, etype);
 
         // the insert method returns row number if the insertion is successful and -1 if unsuccessful
@@ -214,10 +213,10 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
+        cv.put(EmployeeID, eid);
         cv.put(Vehicle_Type, vType);
+        cv.put(model, vModel);
         cv.put(plate, vPlate);
-        cv.put(model, String.valueOf(vModel));
-        cv.put(EmployeeID, String.valueOf(eid));
         cv.put(color, vColor);
         return sqLiteDatabase.insert(TABLE_NAME2, null, cv) != -1;
     }
@@ -229,7 +228,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
-        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(EmployeeID, eId);
         cv.put(type, cType);
 
         return sqLiteDatabase.insert(TABLE_NAME3, null, cv) != -1;
@@ -242,7 +241,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
-        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(EmployeeID, eId);
         cv.put(sideCar, sCar);
 
         return sqLiteDatabase.insert(TABLE_NAME4, null, cv) != -1;
@@ -254,7 +253,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
-        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(EmployeeID, eId);
         cv.put(nbClients, projects);
 
         return sqLiteDatabase.insert(TABLE_NAME5, null, cv) != -1;
@@ -266,7 +265,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
-        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(EmployeeID, eId);
         cv.put(nbClients, clients);
 
         return sqLiteDatabase.insert(TABLE_NAME6, null, cv) != -1;
@@ -278,40 +277,40 @@ public class DataBaseHelper extends SQLiteOpenHelper
 
         ContentValues cv = new ContentValues();
 
-        cv.put(EmployeeID, String.valueOf(eId));
+        cv.put(EmployeeID, eId);
         cv.put(nbBugs, bugs);
 
         return sqLiteDatabase.insert(TABLE_NAME7, null, cv) != -1;
     }
-    Cursor getEmployees() {
+    public  Cursor getEmployees( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME1, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME1+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
-    Cursor getVehicle() {
+    public  Cursor getVehicle( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2+" WHERE "+EmployeeID +" ='"+empId+"'" , null);
     }
-    Cursor getCar() {
+    public  Cursor getCar( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME3, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME3+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
-    Cursor getMotorcycle() {
+    public Cursor getMotorcycle( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME4, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME4+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
-    Cursor getProgrammer() {
+    public Cursor getProgrammer( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME5, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME5+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
-    Cursor getManager() {
+    public Cursor getManager( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME6, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME6+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
-    Cursor getTester() {
+    public  Cursor getTester( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME7, null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME7+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
-    public  Cursor getAllEmployees() {
+     public  Cursor getAllEmployees() {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8, null);
     }

@@ -3,8 +3,8 @@ package com.Catalog;
 public class Employee {
         private String fname;
         private String lname;
-        private int birthYear;
-        private double monthlySalary;
+        private int age;
+        private double Salary;
         private int eId;
         private int rate;
 
@@ -34,17 +34,17 @@ public class Employee {
                 this.lname = lname;
         }
 
-        public int getBirthYear() {
-                return birthYear;
+        public int getage() {
+                return age;
         }
-        public void setBirthYear(int birthYear) {
-                this.birthYear = birthYear;
+        public void setage(int age) {
+                this.age = age;
         }
-        public double getMonthlySalary() {
-                return monthlySalary;
+        public double getSalary() {
+                return Salary;
         }
-        public void setMonthlySalary(double monthlySalary) {
-                this.monthlySalary = monthlySalary;
+        public void setSalary(double monthlySalary) {
+                this.Salary = Salary;
         }
         public int getRate() {
                 return rate;
@@ -53,13 +53,13 @@ public class Employee {
                 this.rate = rate;
         }
 
-        public Employee(String fname,String lname,int birthYear,double monthlySalary,int rate,int eId,String eType) {
+        public Employee(int eId,String fname,String lname,int age,double Salary,int rate,String eType) {
                 super();
                 this.eId=eId;
                 this.fname=fname;
                 this.lname=lname;
-                this.birthYear=birthYear;
-                this.monthlySalary=monthlySalary;
+                this.age=age;
+                this.Salary=Salary;
                 this.rate=rate;
                 this.eType=eType;
         }

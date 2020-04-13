@@ -48,20 +48,19 @@ public class MainActivity extends AppCompatActivity {
             cursor1.close();
         }
 
-        EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, employeeList, myDatabase);
-        listViewEmployee.setAdapter(employeeAdapter);
-        employeeAdapter.notifyDataSetChanged();
+          EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, employeeList, myDatabase);
+            listViewEmployee.setAdapter(employeeAdapter);
+            employeeAdapter.notifyDataSetChanged();
         listViewEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int empid = employeeList.get(position).geteId();
-                Intent intent = new Intent(MainActivity.this, Employ_info.class);
-                intent.putExtra("takeId", empid);
-                startActivity(intent);
+               int empid = employeeList.get(position).geteId();
+                    Intent intent = new Intent(MainActivity.this, Employ_info.class);
+                    intent.putExtra("takeId", empid);
+                    startActivity(intent);
 
             }
         });
-
 /*
         }
 
@@ -180,10 +179,10 @@ public class MainActivity extends AppCompatActivity {
 */
     }
 
-    public void registerEmployee (View view){
-        Intent intent = new Intent(this, RegisterEmployee.class);
-        startActivity(intent);
-    }
+        public void registerEmployee (View view){
+            Intent intent = new Intent(this, RegisterEmployee.class);
+            startActivity(intent);
+        }
 
 
 }

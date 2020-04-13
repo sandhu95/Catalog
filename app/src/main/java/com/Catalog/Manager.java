@@ -10,8 +10,8 @@ public class Manager extends Employee {
         this.nbclients = nbclients;
     }
 
-    public Manager(String fname, String lname, int birthYear, double monthlySalary, int rate, int eId, String eType, int nbclients) {
-        super(fname, lname, birthYear, monthlySalary, rate, eId, eType);
+    public Manager(String fname, String lname, int age, double Salary, int rate, int eId, String eType, int nbclients) {
+        super(eId, fname, lname, age, Salary, rate, eType);
         this.nbclients = nbclients;
     }
 }
