@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, employeeList, myDatabase);
-       // listViewEmployee.setAdapter(employeeAdapter);
+        listViewEmployee.setAdapter(employeeAdapter);
         employeeAdapter.notifyDataSetChanged();
 
 /*
