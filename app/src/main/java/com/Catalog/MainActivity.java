@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +17,6 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     DataBaseHelper myDatabase;
     List<Employee> employeeList;
-    List<Vehicle> vehicleList;
-    List<Car> carList;
-    List<Motorcycle> motorcycleList;
-    List<Programmer> programmerList;
-    List<Manager> managerList;
-    List<Tester> testerList;
-    List<Employee> allEmployeestesterList;
     ListView listViewEmployee;
 
 
@@ -32,38 +26,35 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         listViewEmployee = findViewById(R.id.listview);
         employeeList = new ArrayList<>();
-        vehicleList = new ArrayList<>();
-        carList = new ArrayList<>();
-        motorcycleList = new ArrayList<>();
-        programmerList = new ArrayList<>();
-        managerList = new ArrayList<>();
-        testerList = new ArrayList<>();
-        allEmployeestesterList = new ArrayList<>();
 
         myDatabase = new DataBaseHelper(this);
         loadEmployees();
 
     }
 
+
     private void loadEmployees() {
 
-        /*Cursor cursor1 = myDatabase.getEmployees();
+        Cursor cursor1 = myDatabase.getAllEmployees();
 
         if (cursor1.moveToFirst()) {
             do {
                 employeeList.add(new Employee(
-                        cursor1.getString(0),
+                        cursor1.getInt(0),
                         cursor1.getString(1),
-                        cursor1.getInt(2),
-                        cursor1.getDouble(3),
-                        cursor1.getInt(4),
-                        cursor1.getInt(5),
-                        cursor1.getString(6)
+                        cursor1.getString(2)
                 ));
             } while (cursor1.moveToNext());
             cursor1.close();
         }
+
+        EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, employeeList, myDatabase);
+       // listViewEmployee.setAdapter(employeeAdapter);
+        employeeAdapter.notifyDataSetChanged();
+
 /*
+        }
+
         Cursor cursor2 = myDatabase.getVehicle();
 
         if (cursor2.moveToFirst()) {
@@ -178,11 +169,14 @@ public class MainActivity extends AppCompatActivity {
         }
 */
     }
-        public void addEmployee (View view){
-            Intent intent = new Intent(this, RegisterEmployee.class);
-            startActivity(intent);
-        }
+
+    public void registerEmployee (View view){
+        Intent intent = new Intent(this, RegisterEmployee.class);
+        startActivity(intent);
     }
+
+
+}
 
 
 
