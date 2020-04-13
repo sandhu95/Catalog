@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadEmployees() {
 
-        Cursor cursor1 = myDatabase.getEmployees();
+        /*Cursor cursor1 = myDatabase.getEmployees();
 
         if (cursor1.moveToFirst()) {
             do {
