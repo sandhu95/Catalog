@@ -1,16 +1,14 @@
 package com.Catalog;
 
+
 import android.content.Context;
-import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-
 import java.util.List;
 
 public class EmployeeAdapter extends ArrayAdapter {
@@ -18,14 +16,14 @@ public class EmployeeAdapter extends ArrayAdapter {
     Context mContext;
     int layoutRes;
     List<Employee> employees;
-    DataBaseHelper mDatabase;
+
     public EmployeeAdapter(Context mContext, int layoutRes, List<Employee> employees,DataBaseHelper mDatabase)
     {
         super(mContext, layoutRes, employees);
          this.mContext = mContext;
          this.layoutRes = layoutRes;
          this.employees =  employees;
-         this.mDatabase = mDatabase;
+
     }
 
     @NonNull
@@ -44,5 +42,9 @@ public class EmployeeAdapter extends ArrayAdapter {
 
        return v;
     }
+
+
+
+
 
 }

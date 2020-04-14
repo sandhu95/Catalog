@@ -10,7 +10,6 @@ import androidx.annotation.Nullable;
 public class DataBaseHelper extends SQLiteOpenHelper
 {
 
-    RegisterEmployee rEmployee;
 
         private static final String DATABASE_NAME = "EmployeeDatabase";
         private static final int DATABASE_VERSION = 1;
@@ -308,8 +307,9 @@ public class DataBaseHelper extends SQLiteOpenHelper
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME5+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
     public Cursor getManager( int empId) {
-        SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME6+" WHERE "+EmployeeID +" ='"+empId+"'", null);
+         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
+            return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME6+" WHERE "+EmployeeID +" ='"+empId+"'", null);
+
     }
     public  Cursor getTester( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
@@ -319,5 +319,6 @@ public class DataBaseHelper extends SQLiteOpenHelper
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8, null);
     }
+
 
 }

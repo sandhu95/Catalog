@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 public class Employ_info extends AppCompatActivity {
@@ -105,7 +102,7 @@ public class Employ_info extends AppCompatActivity {
         annualIncome.setText(employeeList.get(0).getSalary()+"");
         occupationRate.setText(employeeList.get(0).getRate()+"");
 
-        /*Cursor cursor5 = Catalog_singleton.getInstance().getmDatabase().getProgrammer(IdEmp);
+        Cursor cursor5 = Catalog_singleton.getInstance().getmDatabase().getProgrammer(IdEmp);
 
         if (cursor5.moveToFirst()) {
             do {
@@ -121,18 +118,61 @@ public class Employ_info extends AppCompatActivity {
                 ));
             } while (cursor5.moveToNext());
             cursor5.close();
-        }*/
+        }
+
+
+        Cursor cursor6 = Catalog_singleton.getInstance().getmDatabase().getTester(IdEmp);
+
+        if (cursor6.moveToFirst()) {
+            do {
+                testerList.add(new Tester(
+                        IdEmp,
+                        fname.getText().toString(),
+                        lname.getText().toString(),
+                        Integer.valueOf(age.getText().toString()),
+                        Double.valueOf(annualIncome.getText().toString()),
+                        Integer.valueOf(occupationRate.getText().toString()),
+                        emp_Type.getText().toString(),
+                        Integer.valueOf(cursor6.getString(1))
+                ));
+            } while (cursor6.moveToNext());
+            cursor6.close();
+        }
+
+
+
+    Cursor cursor7 = Catalog_singleton.getInstance().getmDatabase().getManager(IdEmp);
+
+    if (cursor7.moveToFirst()) {
+        do {
+            managerList.add(new Manager(
+                    cursor7.getInt(0),
+                    fname.getText().toString(),
+                    lname.getText().toString(),
+                    Integer.valueOf(age.getText().toString()),
+                    Double.valueOf(annualIncome.getText().toString()),
+                    Integer.valueOf(occupationRate.getText().toString()),
+                    emp_Type.getText().toString(),
+                    Integer.valueOf(cursor7.getString(1))
+            ));
+        } while (cursor7.moveToNext());
+        cursor7.close();
+    }
+
+        int projects = programmerList.get(0).getNbProjects();
+        int bugs = testerList.get(0).getNbBugs();
+       int clients = managerList.get(0).getNbclients();
         if(employeeList.get(0).geteType().equals("Manager"))
         {
-            setempType.setText("He/She has brought "+" Clients");
+            setempType.setText("He/She has brought "+clients+" Clients");
         }
         if(employeeList.get(0).geteType().equals("Tester"))
         {
-            setempType.setText("He/She has Corrected "+" Bugs");
+            setempType.setText("He/She has Corrected  "+bugs+" Bugs");
         }
         if(employeeList.get(0).geteType().equals("Programmer"))
         {
-            setempType.setText("He/She has completed "+" Projects");
+            setempType.setText("He/She has completed "+projects+" Projects");
         }
 
 
@@ -174,7 +214,7 @@ public class Employ_info extends AppCompatActivity {
         if (cursor3.moveToFirst()) {
             do {
                 motorcycleList.add(new Motorcycle(
-                        cursor3.getInt(0),
+                        IdEmp,
                         cursor3.getString(1),
                         vehicleType.getText().toString(),
                         model.getText().toString(),
@@ -189,22 +229,22 @@ public class Employ_info extends AppCompatActivity {
         else
             sidecar.setText("Without");
 
-       /* Cursor cursor4 = Catalog_singleton.getInstance().getmDatabase().getCar(IdEmp);
+       Cursor cursor4 = Catalog_singleton.getInstance().getmDatabase().getCar(IdEmp);
 
         if (cursor4.moveToFirst()) {
             do {
                 carList.add(new Car(
                         cursor4.getInt(0),
-                        cursor4.getString(1),
-                        vehicleType.getText().toString(),
+                       vehicleType.getText().toString(),
                         model.getText().toString(),
                         plate.getText().toString(),
-                        vcolor.getText().toString()
+                        vcolor.getText().toString(),
+                        cursor4.getString(1)
+
                 ));
             } while (cursor4.moveToNext());
             cursor4.close();
         }
         cartype.setText(carList.get(0).getType());
-*/
     }
 }

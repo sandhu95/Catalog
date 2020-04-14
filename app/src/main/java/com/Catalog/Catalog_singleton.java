@@ -1,5 +1,7 @@
 package com.Catalog;
 
+import java.util.List;
+
 class Catalog_singleton {
     public DataBaseHelper getmDatabase() {
         return mDatabase;
@@ -10,6 +12,16 @@ class Catalog_singleton {
     }
 
     private DataBaseHelper mDatabase;
+
+    public List<Employee> getEmployeeList() {
+        return employeeList;
+    }
+
+    public void setEmployeeList(List<Employee> employeeList) {
+        this.employeeList = employeeList;
+    }
+
+    List<Employee> employeeList;
 
     private static final Catalog_singleton ourInstance = new Catalog_singleton();
 

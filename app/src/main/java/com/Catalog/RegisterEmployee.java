@@ -173,7 +173,13 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             return;
         }
         int empId = Integer.valueOf(employeeID.getText().toString());
-
+        for(int temp = 0; temp < Catalog_singleton.getInstance().getEmployeeList().size();temp++) {
+            if (Catalog_singleton.getInstance().getEmployeeList().get(temp).geteId()==empId) {
+                employeeID.setError("employee already exists!");
+                employeeID.requestFocus();
+                return;
+            }
+        }
         if (employeeType.getSelectedItem().toString().equals("Choose a Type")) {
             Toast.makeText(this, "choose Employee Type", Toast.LENGTH_SHORT).show();
             employeeType.requestFocus();
@@ -215,8 +221,8 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             numberofprojects = Integer.valueOf(projects.getText().toString());
             aSalary = aSalary + gainFactorProjects * numberofprojects;
         }
-        String vehicle = "";
-        String cType ="";
+        String vehicle = "N/A";
+        String cType ="N/A";
         if (!carRadioBtn.isChecked() && !motorcycleRadioBtn.isChecked()) {
             Toast.makeText(this, "choose vehicle owned", Toast.LENGTH_SHORT).show();
             vehicleTypeRadioGroup.requestFocus();
@@ -231,7 +237,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             vehicle="Car";
             cType = carTypeSpinner.getSelectedItem().toString();
         }
-        String sidecar = "";
+        String sidecar = "N/A";
         if (motorcycleRadioBtn.isChecked()) {
             if (!sidecarNoRadioBtn.isChecked() && !sidecarYesRadioBtn.isChecked()) {
                 Toast.makeText(this, "select Yes or No for sidecar!", Toast.LENGTH_SHORT).show();
@@ -271,13 +277,15 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
 
         if (Catalog_singleton.getInstance().getmDatabase().allEmployees(empId,fName,lName)
                 && Catalog_singleton.getInstance().getmDatabase().addEmployee(empId,fName,lName,empAge,aSalary,oRate,eType)
-                &&(Catalog_singleton.getInstance().getmDatabase().addMotorcycle(empId,sidecar)||Catalog_singleton.getInstance().getmDatabase().addCar(empId,cType))
+                &&Catalog_singleton.getInstance().getmDatabase().addMotorcycle(empId,sidecar)
+                &&Catalog_singleton.getInstance().getmDatabase().addCar(empId,cType)
                 &&Catalog_singleton.getInstance().getmDatabase().addVehicle(empId,vehicle,vModel,pNumber,vColor)
-                &&(Catalog_singleton.getInstance().getmDatabase().addTester(empId,numberofbugs)
-                ||Catalog_singleton.getInstance().getmDatabase().addManager(empId,numberofclients)
-                ||Catalog_singleton.getInstance().getmDatabase().addProgrammer(empId, numberofprojects))) {
+                &&Catalog_singleton.getInstance().getmDatabase().addTester(empId,numberofbugs)
+                &&Catalog_singleton.getInstance().getmDatabase().addManager(empId,numberofclients)
+                &&Catalog_singleton.getInstance().getmDatabase().addProgrammer(empId, numberofprojects)) {
             Toast.makeText(this, "Employee added", Toast.LENGTH_SHORT).show();
-            onRestart();
+
+
         } else
             Toast.makeText(this, "Employee not added", Toast.LENGTH_SHORT).show();
     }
