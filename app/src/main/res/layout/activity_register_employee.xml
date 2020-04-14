@@ -370,7 +370,7 @@
                 android:layout_marginEnd="8dp"
                 android:ems="10"
                 android:hint="model (year)"
-                android:inputType="number"
+                android:inputType="textPersonName"
                 android:textSize="10sp"
                 android:visibility="visible"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -17,7 +17,6 @@ import java.util.Calendar;
 
 public class RegisterEmployee extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    DataBaseHelper mDatabase;
 
     EditText firstName,lastName,birthYear,monthlySalary,occupationRate,employeeID,projects,clients,
     bugs,vehicleModel,plateNumber;
@@ -89,7 +88,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         });
         employeeType.setOnItemSelectedListener(this);
 
-        mDatabase = new DataBaseHelper(this);
+
     }
 
     @Override
@@ -166,7 +165,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         } else if (oRate < 10) {
             oRate = 10;
         }
-        double aSalary = 12 * mSalary * oRate;
+        double aSalary = 12 * mSalary * (oRate/100);
 
         if (employeeID.getText().toString().isEmpty()) {
             employeeID.setError("this field is mandatory!");
@@ -254,7 +253,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             vehicleModel.requestFocus();
             return;
         }
-        int vModel = Integer.valueOf(vehicleModel.getText().toString());
+        String vModel = vehicleModel.getText().toString().trim();
 
         if (plateNumber.getText().toString().isEmpty()) {
             plateNumber.setError("enter vehicle plate!");
@@ -270,14 +269,15 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         }
         String vColor = vehicleColorSpinner.getSelectedItem().toString().trim();
 
-        if (mDatabase.allEmployees(empId,fName,lName)
-                && mDatabase.addEmployee(empId,fName,lName,empAge,aSalary,oRate,eType)
-                &&(mDatabase.addMotorcycle(empId,sidecar)||mDatabase.addCar(empId,cType))
-                &&mDatabase.addVehicle(empId,vehicle,vModel,pNumber,vColor)
-                &&(mDatabase.addTester(empId,numberofbugs)
-                ||mDatabase.addManager(empId,numberofclients)
-                ||mDatabase.addProgrammer(empId, numberofprojects))) {
+        if (Catalog_singleton.getInstance().getmDatabase().allEmployees(empId,fName,lName)
+                && Catalog_singleton.getInstance().getmDatabase().addEmployee(empId,fName,lName,empAge,aSalary,oRate,eType)
+                &&(Catalog_singleton.getInstance().getmDatabase().addMotorcycle(empId,sidecar)||Catalog_singleton.getInstance().getmDatabase().addCar(empId,cType))
+                &&Catalog_singleton.getInstance().getmDatabase().addVehicle(empId,vehicle,vModel,pNumber,vColor)
+                &&(Catalog_singleton.getInstance().getmDatabase().addTester(empId,numberofbugs)
+                ||Catalog_singleton.getInstance().getmDatabase().addManager(empId,numberofclients)
+                ||Catalog_singleton.getInstance().getmDatabase().addProgrammer(empId, numberofprojects))) {
             Toast.makeText(this, "Employee added", Toast.LENGTH_SHORT).show();
+            onRestart();
         } else
             Toast.makeText(this, "Employee not added", Toast.LENGTH_SHORT).show();
     }

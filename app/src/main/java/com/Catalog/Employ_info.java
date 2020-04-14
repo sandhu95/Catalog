@@ -5,13 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class Employ_info extends AppCompatActivity {
-    DataBaseHelper myDatabase;
+
 
     List<Employee> employeeList;
     List<Vehicle> vehicleList;
@@ -24,10 +29,18 @@ public class Employ_info extends AppCompatActivity {
     TextView fname;
     TextView lname;
     TextView emp_Type;
-    TextView vcolor;
     TextView age;
     TextView annualIncome;
-
+    TextView occupationRate;
+    TextView vehicleType;
+    TextView model;
+    TextView plate;
+    TextView vcolor;
+    TextView setempType;
+    TextView sidecar;
+    TextView cartype;
+    TextView cartxt;
+    TextView motorcycletxt;
 
 
     @Override
@@ -47,17 +60,29 @@ public class Employ_info extends AppCompatActivity {
         testerList = new ArrayList<>();
 
         fname = findViewById(R.id.fname_info);
-        vcolor = findViewById(R.id.color_info);
         lname = findViewById(R.id.lname_info);
         emp_Type = findViewById(R.id.emp_type_info);
         age = findViewById(R.id.age_info);
         annualIncome = findViewById(R.id.annualincome_info);
+        occupationRate = findViewById(R.id.occupationrate_info);
+        setempType = findViewById(R.id.clients_bugs_projects_info);
 
-        myDatabase = new DataBaseHelper(this);
+        vehicleType = findViewById(R.id.vehicle_info);
+        model = findViewById(R.id.model_info);
+        plate = findViewById(R.id.plate_info);
+        vcolor = findViewById(R.id.color_info);
+        sidecar = findViewById(R.id.sidecar_info);
+        cartype = findViewById(R.id.cartype_info);
+        cartxt = findViewById(R.id.cartype_info_label);
+        motorcycletxt = findViewById(R.id.sidecar_info_label);
+
+
+
         loadEmployees( EmpId);
+
     }
     private  void loadEmployees( int IdEmp){
-        Cursor cursor1 = myDatabase.getEmployees(IdEmp);
+        Cursor cursor1 = Catalog_singleton.getInstance().getmDatabase().getEmployees(IdEmp);
 
         if (cursor1.moveToFirst()) {
             do {
@@ -73,22 +98,54 @@ public class Employ_info extends AppCompatActivity {
             } while (cursor1.moveToNext());
             cursor1.close();
         }
-
         fname.setText(employeeList.get(0).getfName());
         lname.setText(employeeList.get(0).getlName());
         emp_Type.setText(employeeList.get(0).geteType());
         age.setText(employeeList.get(0).getage()+"");
         annualIncome.setText(employeeList.get(0).getSalary()+"");
+        occupationRate.setText(employeeList.get(0).getRate()+"");
+
+        /*Cursor cursor5 = Catalog_singleton.getInstance().getmDatabase().getProgrammer(IdEmp);
+
+        if (cursor5.moveToFirst()) {
+            do {
+                programmerList.add(new Programmer(
+                        cursor5.getInt(0),
+                        fname.getText().toString(),
+                        lname.getText().toString(),
+                        Integer.valueOf(age.getText().toString()),
+                        Double.valueOf(annualIncome.getText().toString()),
+                        Integer.valueOf(occupationRate.getText().toString()),
+                        emp_Type.getText().toString(),
+                        Integer.valueOf(cursor5.getString(1))
+                ));
+            } while (cursor5.moveToNext());
+            cursor5.close();
+        }*/
+        if(employeeList.get(0).geteType().equals("Manager"))
+        {
+            setempType.setText("He/She has brought "+" Clients");
+        }
+        if(employeeList.get(0).geteType().equals("Tester"))
+        {
+            setempType.setText("He/She has Corrected "+" Bugs");
+        }
+        if(employeeList.get(0).geteType().equals("Programmer"))
+        {
+            setempType.setText("He/She has completed "+" Projects");
+        }
 
 
-        Cursor cursor2 = myDatabase.getVehicle(IdEmp);
+
+
+        Cursor cursor2 = Catalog_singleton.getInstance().getmDatabase().getVehicle(IdEmp);
 
         if (cursor2.moveToFirst()) {
             do {
                 vehicleList.add(new Vehicle(
                         cursor2.getInt(0),
                         cursor2.getString(1),
-                        cursor2.getInt(2),
+                        cursor2.getString(2),
                         cursor2.getString(3),
                         cursor2.getString(4)
                 ));
@@ -96,7 +153,58 @@ public class Employ_info extends AppCompatActivity {
             cursor2.close();
         }
 
-      vcolor.setText(vehicleList.get(0).getColor());
+        vehicleType.setText(vehicleList.get(0).getvType());
+        model.setText(vehicleList.get(0).getModel());
+        plate.setText(vehicleList.get(0).getPlate());
+        vcolor.setText(vehicleList.get(0).getColor());
+        if(vehicleType.getText().toString().equals("Car"))
+        {
+            cartype.setVisibility(VISIBLE);
+            cartxt.setVisibility(VISIBLE);
 
+        }
+        if(vehicleType.getText().toString().equals("Motorcycle"))
+        {
+            motorcycletxt.setVisibility(VISIBLE);
+            sidecar.setVisibility(VISIBLE);
+        }
+
+        Cursor cursor3 = Catalog_singleton.getInstance().getmDatabase().getMotorcycle(IdEmp);
+
+        if (cursor3.moveToFirst()) {
+            do {
+                motorcycleList.add(new Motorcycle(
+                        cursor3.getInt(0),
+                        cursor3.getString(1),
+                        vehicleType.getText().toString(),
+                        model.getText().toString(),
+                        plate.getText().toString(),
+                        vcolor.getText().toString()
+                ));
+            } while (cursor3.moveToNext());
+            cursor3.close();
+        }
+        if(motorcycleList.get(0).getSideCar().equals("Yes"))
+            sidecar.setText("With");
+        else
+            sidecar.setText("Without");
+
+       /* Cursor cursor4 = Catalog_singleton.getInstance().getmDatabase().getCar(IdEmp);
+
+        if (cursor4.moveToFirst()) {
+            do {
+                carList.add(new Car(
+                        cursor4.getInt(0),
+                        cursor4.getString(1),
+                        vehicleType.getText().toString(),
+                        model.getText().toString(),
+                        plate.getText().toString(),
+                        vcolor.getText().toString()
+                ));
+            } while (cursor4.moveToNext());
+            cursor4.close();
+        }
+        cartype.setText(carList.get(0).getType());
+*/
     }
 }

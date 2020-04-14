@@ -81,7 +81,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
             String sql2 = "CREATE TABLE " + TABLE_NAME2 + " (" +
                     EmployeeID + " INTEGER PRIMARY KEY, " +
                     Vehicle_Type + " TEXT NOT NULL, " +
-                    model + " INTEGER NOT NULL, " +
+                    model + " TEXT NOT NULL, " +
                     plate + " TEXT NOT NULL, " +
                     color + " TEXT NOT NULL);";
             db.execSQL(sql2);
@@ -205,7 +205,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         // the insert method returns row number if the insertion is successful and -1 if unsuccessful
         return sqLiteDatabase.insert(TABLE_NAME1, null, cv) != -1;
     }
-    boolean addVehicle(int eid,String vType, int vModel,String vPlate, String vColor){
+    boolean addVehicle(int eid,String vType, String vModel,String vPlate, String vColor){
 
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
 
@@ -254,7 +254,7 @@ public class DataBaseHelper extends SQLiteOpenHelper
         ContentValues cv = new ContentValues();
 
         cv.put(EmployeeID, eId);
-        cv.put(nbClients, projects);
+        cv.put(nbProjects, projects);
 
         return sqLiteDatabase.insert(TABLE_NAME5, null, cv) != -1;
     }
@@ -286,13 +286,18 @@ public class DataBaseHelper extends SQLiteOpenHelper
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME1+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
+
+
+
     public  Cursor getVehicle( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME2+" WHERE "+EmployeeID +" ='"+empId+"'" , null);
+        return sqLiteDatabase.rawQuery( "SELECT * FROM "+ TABLE_NAME2+" WHERE "+EmployeeID +" ='"+empId+"'", null);
     }
+
     public  Cursor getCar( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
-        return sqLiteDatabase.rawQuery("SELECT * FROM "+ TABLE_NAME3+" WHERE "+EmployeeID +" ='"+empId+"'", null);
+        return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME3+" WHERE "+EmployeeID +" ='"+empId+"'", null);
+
     }
     public Cursor getMotorcycle( int empId) {
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();

@@ -4,7 +4,7 @@ public class Motorcycle extends Vehicle
 {
     private String sideCar;
 
-    public Motorcycle(int eId, String plate, int model, String color, String vType, String sideCar) {
+    public Motorcycle(int eId,String sideCar,String vType, String model, String plate, String color) {
         super(eId, plate, model, color, vType);
         this.sideCar = sideCar;
     }

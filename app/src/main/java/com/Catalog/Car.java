@@ -11,7 +11,7 @@ public class Car extends Vehicle
         this.type = type;
     }
 
-    public Car(int eId, String plate, int model, String color, String vType, String type) {
+    public Car(int eId, String plate, String model, String color, String vType, String type) {
         super(eId, plate, model, color, vType);
         this.type = type;
     }

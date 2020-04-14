@@ -2,7 +2,7 @@ package com.Catalog;
 
 public class Vehicle {
         private int eId;
-        private int model;
+        private String model;
         private String plate;
         private String color;
         private String vType;
@@ -16,7 +16,7 @@ public class Vehicle {
 
 
 
-    public Vehicle(int eId,String plate,int model,String color,String vType) {
+    public Vehicle(int eId,String vType, String model,String plate, String color) {
         this.eId = eId;
         this.model=model;
         this.plate=plate;
@@ -32,11 +32,11 @@ public class Vehicle {
         this.eId = eId;
     }
 
-    public int getModel() {
+    public String getModel() {
         return model;
     }
 
-    public void setModel(int model) {
+    public void setModel(String model) {
         this.model = model;
     }
 
