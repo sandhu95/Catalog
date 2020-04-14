@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
 
     ListView listViewEmployee;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,11 +26,16 @@ public class MainActivity extends AppCompatActivity {
 
         Catalog_singleton.getInstance().setmDatabase(new DataBaseHelper(this));
 
+        Catalog_singleton.getInstance().getmDatabase().createTables(Catalog_singleton.getInstance().getmDatabase().getWritableDatabase());
         loadEmployees();
     }
 
-
-
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Catalog_singleton.getInstance().employeeList.clear();
+        loadEmployees();
+    }
 
     private   void loadEmployees() {
 
@@ -58,17 +62,14 @@ public class MainActivity extends AppCompatActivity {
                     Intent intent = new Intent(MainActivity.this, Employ_info.class);
                     intent.putExtra("takeId", empid);
                     startActivity(intent);
-
             }
         });
 
     }
-
         public void registerEmployee (View view){
             Intent intent = new Intent(this, RegisterEmployee.class);
             startActivity(intent);
         }
-
 
 }
 

@@ -319,6 +319,18 @@ public class DataBaseHelper extends SQLiteOpenHelper
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8, null);
     }
+    boolean deleteEmployee(int id) {
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+        // the delete method returns the number of rows affected
+        boolean x = sqLiteDatabase.delete(TABLE_NAME1, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        x = sqLiteDatabase.delete(TABLE_NAME2, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        x = sqLiteDatabase.delete(TABLE_NAME3, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        x = sqLiteDatabase.delete(TABLE_NAME4, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        x = sqLiteDatabase.delete(TABLE_NAME5, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        x = sqLiteDatabase.delete(TABLE_NAME6, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        x = sqLiteDatabase.delete(TABLE_NAME7, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+        return sqLiteDatabase.delete(TABLE_NAME8, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
+    }
 
 
 }

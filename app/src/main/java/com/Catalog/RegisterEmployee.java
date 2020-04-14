@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.Calendar;
 
+import static android.view.View.GONE;
 
 
 public class RegisterEmployee extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
@@ -70,8 +71,8 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 if(carRadioBtn.isChecked()){
                     carTypeLabel.setVisibility(view.VISIBLE);
                     carTypeSpinner.setVisibility(view.VISIBLE);
-                    sideCarLabel.setVisibility(view.GONE);
-                    sideCarRadioGroup.setVisibility(view.GONE);
+                    sideCarLabel.setVisibility(GONE);
+                    sideCarRadioGroup.setVisibility(GONE);
                 }
             }
         });
@@ -81,8 +82,8 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                  if(motorcycleRadioBtn.isChecked()){
                     sideCarLabel.setVisibility(view.VISIBLE);
                     sideCarRadioGroup.setVisibility(view.VISIBLE);
-                     carTypeLabel.setVisibility(view.GONE);
-                     carTypeSpinner.setVisibility(view.GONE);
+                     carTypeLabel.setVisibility(GONE);
+                     carTypeSpinner.setVisibility(GONE);
                 }
             }
         });
@@ -97,26 +98,26 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 if (employeeType.getSelectedItem().toString().equals("Manager")) {
                     clientsLabel.setVisibility(view.VISIBLE);
                     clients.setVisibility(view.VISIBLE);
-                    bugsLabel.setVisibility(view.GONE);
-                    bugs.setVisibility(view.GONE);
-                    projectsLabel.setVisibility(view.GONE);
-                    projects.setVisibility(view.GONE);
+                    bugsLabel.setVisibility(GONE);
+                    bugs.setVisibility(GONE);
+                    projectsLabel.setVisibility(GONE);
+                    projects.setVisibility(GONE);
                 }
                 if (employeeType.getSelectedItem().toString().equals("Tester")) {
                     bugsLabel.setVisibility(view.VISIBLE);
                     bugs.setVisibility(view.VISIBLE);
-                    projectsLabel.setVisibility(view.GONE);
-                    projects.setVisibility(view.GONE);
-                    clientsLabel.setVisibility(view.GONE);
-                    clients.setVisibility(view.GONE);
+                    projectsLabel.setVisibility(GONE);
+                    projects.setVisibility(GONE);
+                    clientsLabel.setVisibility(GONE);
+                    clients.setVisibility(GONE);
                 }
                 if (employeeType.getSelectedItem().toString().equals("Programmer")) {
                     projectsLabel.setVisibility(view.VISIBLE);
                     projects.setVisibility(view.VISIBLE);
-                    clientsLabel.setVisibility(view.GONE);
-                    clients.setVisibility(view.GONE);
-                    bugsLabel.setVisibility(view.GONE);
-                    bugs.setVisibility(view.GONE);
+                    clientsLabel.setVisibility(GONE);
+                    clients.setVisibility(GONE);
+                    bugsLabel.setVisibility(GONE);
+                    bugs.setVisibility(GONE);
                 }
 
     }
@@ -165,8 +166,8 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         } else if (oRate < 10) {
             oRate = 10;
         }
-        double aSalary = 12 * mSalary * (oRate/100);
-
+        double aSalary = 12 * mSalary * (oRate/100.0);
+System.out.println(aSalary);
         if (employeeID.getText().toString().isEmpty()) {
             employeeID.setError("this field is mandatory!");
             employeeID.requestFocus();
@@ -209,6 +210,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             }
             numberofbugs = Integer.valueOf(bugs.getText().toString());
             aSalary = aSalary + gainFactorError * numberofbugs;
+            System.out.println(aSalary);
         }
         int numberofprojects=0;
         if (eType.equals("Programmer")) {
@@ -284,7 +286,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
                 &&Catalog_singleton.getInstance().getmDatabase().addManager(empId,numberofclients)
                 &&Catalog_singleton.getInstance().getmDatabase().addProgrammer(empId, numberofprojects)) {
             Toast.makeText(this, "Employee added", Toast.LENGTH_SHORT).show();
-
+            onRestart();
 
         } else
             Toast.makeText(this, "Employee not added", Toast.LENGTH_SHORT).show();
@@ -306,6 +308,16 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
         plateNumber.setText("");
         employeeType.setSelection(0);
         carTypeSpinner.setSelection(0);
+        bugsLabel.setVisibility(GONE);
+        bugs.setVisibility(GONE);
+        clientsLabel.setVisibility(GONE);
+        clients.setVisibility(GONE);
+        projectsLabel.setVisibility(GONE);
+        projects.setVisibility(GONE);
+        sideCarLabel.setVisibility(GONE);
+        sideCarRadioGroup.setVisibility(GONE);
+        carTypeLabel.setVisibility(GONE);
+        carTypeSpinner.setVisibility(GONE);
         vehicleColorSpinner.setSelection(0);
         carRadioBtn.setChecked(false);
         motorcycleRadioBtn.setChecked(false);

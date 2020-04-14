@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Name :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/fname_info" />
 
@@ -21,6 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="44dp"
         android:text="fname"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toTopOf="@+id/lname_info" />
 
@@ -31,6 +33,8 @@
         android:layout_marginStart="120dp"
         android:layout_marginTop="48dp"
         android:text="Employee Information"
+        android:textColor="#000000"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,10 +43,11 @@
         android:id="@+id/lname_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="4dp"
         android:text="lname"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/fname_info"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/textView4" />
 
     <TextView
         android:id="@+id/textView5"
@@ -50,6 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Age :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/age_info" />
 
@@ -59,6 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/lname_info"
         tools:text="age" />
@@ -69,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Employee has a "
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/vehicle_info" />
 
@@ -78,6 +86,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="vehicle_type"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/age_info" />
 
@@ -87,6 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Model :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/model_info" />
 
@@ -96,6 +106,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Plate :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/plate_info" />
 
@@ -105,6 +116,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Color :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/color_info" />
 
@@ -115,6 +127,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:text="model"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView9"
         app:layout_constraintTop_toBottomOf="@+id/vehicle_info" />
 
@@ -125,6 +138,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
         android:text="plate"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/model_info" />
 
@@ -135,6 +149,7 @@
         android:layout_marginStart="55dp"
         android:layout_marginTop="24dp"
         android:text="color"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/plate_info" />
 
@@ -144,6 +159,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="with "
+        android:textColor="#000000"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/sidecar_info_label" />
@@ -154,6 +170,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text=" a Side Car"
+        android:textColor="#000000"
         android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/sidecar_info"
         app:layout_constraintTop_toBottomOf="@+id/color_info" />
@@ -164,6 +181,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Type :"
+        android:textColor="#000000"
         android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/cartype_info" />
@@ -175,6 +193,7 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="24dp"
         android:text="cartype"
+        android:textColor="#000000"
         android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/cartype_info_label"
         app:layout_constraintTop_toBottomOf="@+id/sidecar_info_label" />
@@ -185,6 +204,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Occupation Rate :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/occupationrate_info" />
 
@@ -195,6 +215,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="occupationRate"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/cartype_info" />
 
@@ -204,6 +225,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="Annual Income :"
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView25" />
 
@@ -213,6 +235,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="annualIncome"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView25"
         app:layout_constraintTop_toBottomOf="@+id/occupationrate_info" />
 
@@ -222,6 +245,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="He/ She has "
+        android:textColor="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/clients_bugs_projects_info" />
 
@@ -229,9 +253,9 @@
         android:id="@+id/clients_bugs_projects_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
         android:layout_marginTop="24dp"
         android:text="completed 3 projects"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/annualincome_info" />
 
@@ -241,6 +265,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:text=" $"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toTopOf="@+id/annualincome_info" />
 
@@ -248,8 +273,10 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=", a "
-        app:layout_constraintStart_toEndOf="@+id/lname_info"
+        android:layout_marginStart="16dp"
+        android:text=" a "
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/emp_type_info" />
 
     <TextView
@@ -258,6 +285,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:text="emp_type"
+        android:textColor="#000000"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=","
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/lname_info"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    <Button
+        android:id="@+id/deleteEmployee"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginBottom="72dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

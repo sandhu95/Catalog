@@ -2,10 +2,14 @@ package com.Catalog;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +50,7 @@ public class Employ_info extends AppCompatActivity {
         setContentView(R.layout.activity_employ_info);
 
        Intent intent = getIntent();
-        int EmpId = intent.getExtras().getInt("takeId");
+        final int EmpId = intent.getExtras().getInt("takeId");
 
         vehicleList = new ArrayList<>();
         employeeList = new ArrayList<>();
@@ -76,9 +80,15 @@ public class Employ_info extends AppCompatActivity {
 
 
         loadEmployees( EmpId);
+        findViewById(R.id.deleteEmployee).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteEmployee(EmpId);
+            }
+        });
 
     }
-    private  void loadEmployees( int IdEmp){
+   private  void loadEmployees( int IdEmp){
         Cursor cursor1 = Catalog_singleton.getInstance().getmDatabase().getEmployees(IdEmp);
 
         if (cursor1.moveToFirst()) {
@@ -164,15 +174,15 @@ public class Employ_info extends AppCompatActivity {
        int clients = managerList.get(0).getNbclients();
         if(employeeList.get(0).geteType().equals("Manager"))
         {
-            setempType.setText("He/She has brought "+clients+" Clients");
+            setempType.setText(" brought "+clients+" Clients");
         }
         if(employeeList.get(0).geteType().equals("Tester"))
         {
-            setempType.setText("He/She has Corrected  "+bugs+" Bugs");
+            setempType.setText(" Corrected  "+bugs+" Bugs");
         }
         if(employeeList.get(0).geteType().equals("Programmer"))
         {
-            setempType.setText("He/She has completed "+projects+" Projects");
+            setempType.setText(" completed "+projects+" Projects");
         }
 
 
@@ -246,5 +256,34 @@ public class Employ_info extends AppCompatActivity {
             cursor4.close();
         }
         cartype.setText(carList.get(0).getType());
+    }
+
+    private void deleteEmployee(final int emplId) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Are you sure?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                if (Catalog_singleton.getInstance().getmDatabase().deleteEmployee(emplId)) {
+                    Toast.makeText(Employ_info.this, "Employee Deleted", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(Employ_info.this, MainActivity.class);
+
+                    // to delete the view of this activity
+                    finishAffinity();
+                    startActivity(intent);
+                }
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }
