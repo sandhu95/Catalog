@@ -167,7 +167,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             oRate = 10;
         }
         double aSalary = 12 * mSalary * (oRate/100.0);
-System.out.println(aSalary);
+
         if (employeeID.getText().toString().isEmpty()) {
             employeeID.setError("this field is mandatory!");
             employeeID.requestFocus();
@@ -210,7 +210,7 @@ System.out.println(aSalary);
             }
             numberofbugs = Integer.valueOf(bugs.getText().toString());
             aSalary = aSalary + gainFactorError * numberofbugs;
-            System.out.println(aSalary);
+
         }
         int numberofprojects=0;
         if (eType.equals("Programmer")) {
