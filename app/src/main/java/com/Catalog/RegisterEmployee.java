@@ -88,7 +88,7 @@ public class RegisterEmployee extends AppCompatActivity implements AdapterView.O
             }
         });
         employeeType.setOnItemSelectedListener(this);
-
+        occupationRate.setText("100");
 
     }
 

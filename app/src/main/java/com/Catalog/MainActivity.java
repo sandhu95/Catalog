@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
+
 import java.util.ArrayList;
 import  java.lang.String;
 
@@ -16,18 +18,50 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     ListView listViewEmployee;
+    SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        searchView = findViewById(R.id.searchView);
         listViewEmployee = findViewById(R.id.listview);
+
+
         Catalog_singleton.getInstance().setEmployeeList(new ArrayList<Employee>());
-
         Catalog_singleton.getInstance().setmDatabase(new DataBaseHelper(this));
-
         Catalog_singleton.getInstance().getmDatabase().createTables(Catalog_singleton.getInstance().getmDatabase().getWritableDatabase());
+
         loadEmployees();
+
+        final EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, Catalog_singleton.getInstance().getEmployeeList(), Catalog_singleton.getInstance().getmDatabase());
+        listViewEmployee.setAdapter(employeeAdapter);
+        employeeAdapter.notifyDataSetChanged();
+        listViewEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int empid = Catalog_singleton.getInstance().getEmployeeList().get(position).geteId();
+                Intent intent = new Intent(MainActivity.this, Employ_info.class);
+                intent.putExtra("takeId", empid);
+                startActivity(intent);
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                employeeAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
     }
 
     @Override
@@ -52,18 +86,6 @@ public class MainActivity extends AppCompatActivity {
             cursor1.close();
         }
 
-          EmployeeAdapter employeeAdapter = new EmployeeAdapter(this, R.layout.list_layout_mainpage, Catalog_singleton.getInstance().getEmployeeList(), Catalog_singleton.getInstance().getmDatabase());
-            listViewEmployee.setAdapter(employeeAdapter);
-            employeeAdapter.notifyDataSetChanged();
-        listViewEmployee.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               int empid = Catalog_singleton.getInstance().getEmployeeList().get(position).geteId();
-                    Intent intent = new Intent(MainActivity.this, Employ_info.class);
-                    intent.putExtra("takeId", empid);
-                    startActivity(intent);
-            }
-        });
 
     }
         public void registerEmployee (View view){
