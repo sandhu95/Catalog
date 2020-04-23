@@ -1,6 +1,8 @@
 package com.Catalog;
 
-public class Car extends Vehicle
+import java.io.Serializable;
+
+public class Car extends Vehicle implements Serializable
 {
 
     private String type;

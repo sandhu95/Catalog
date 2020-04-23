@@ -71,9 +71,7 @@ public class EmployeeAdapter extends ArrayAdapter  implements Filterable {
                 firstName.setText(employee.getfName());
                 lastName.setText(String.valueOf(employee.getlName()));
                 idInList.setText(employee.geteId() + "");
-
             }
-
            return convertView;
     }
 
@@ -90,9 +88,7 @@ public class EmployeeAdapter extends ArrayAdapter  implements Filterable {
 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
-
             FilterResults results = new FilterResults();
-
             if(!(constraint == null )&&constraint.length()>0){
                 constraint = constraint.toString().toUpperCase();
                 List<Employee> filters = new ArrayList<Employee>();
@@ -109,15 +105,11 @@ public class EmployeeAdapter extends ArrayAdapter  implements Filterable {
                 results.count = filterList.size();
                 results.values = filterList;
             }
-
             return results;
         }
-
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
-
             employees=(List<Employee>) results.values;
-
             notifyDataSetChanged();
             }
     }

@@ -92,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, RegisterEmployee.class);
             startActivity(intent);
         }
-
 }
 
 

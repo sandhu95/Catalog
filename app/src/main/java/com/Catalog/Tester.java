@@ -1,6 +1,8 @@
 package com.Catalog;
 
-public class Tester extends Employee {
+import java.io.Serializable;
+
+public class Tester extends Employee implements Serializable {
     private  int nbBugs;
 
     public int getNbBugs() {

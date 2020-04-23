@@ -1,6 +1,8 @@
 package com.Catalog;
 
-public class Employee {
+import java.io.Serializable;
+
+public class Employee implements Serializable {
         private String fname;
         private String lname;
         private int age;

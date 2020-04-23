@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -80,6 +81,12 @@ public class Employ_info extends AppCompatActivity {
 
 
         loadEmployees( EmpId);
+        findViewById(R.id.updateEmployee).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateEmployee(EmpId);
+            }
+        });
         findViewById(R.id.deleteEmployee).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -256,6 +263,26 @@ public class Employ_info extends AppCompatActivity {
             cursor4.close();
         }
         cartype.setText(carList.get(0).getType());
+    }
+
+    private void updateEmployee(final int empId){
+        Intent intent = new Intent(Employ_info.this, Update_Employee.class);
+
+        intent.putExtra("Employee",employeeList.get(0));
+
+        intent.putExtra("Vehicle",  vehicleList.get(0));
+
+        intent.putExtra("Car", carList.get(0));
+
+        intent.putExtra("Motorcycle",  motorcycleList.get(0));
+
+        intent.putExtra("Programmer",programmerList.get(0));
+
+        intent.putExtra("Manager",  managerList.get(0));
+
+        intent.putExtra("Tester",  testerList.get(0));
+
+        startActivity(intent);
     }
 
     private void deleteEmployee(final int emplId) {

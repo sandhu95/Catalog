@@ -1,6 +1,8 @@
 package com.Catalog;
 
-public class Vehicle {
+import java.io.Serializable;
+
+public class Vehicle implements Serializable {
         private int eId;
         private String model;
         private String plate;

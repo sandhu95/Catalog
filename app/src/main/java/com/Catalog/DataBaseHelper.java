@@ -319,6 +319,102 @@ public class DataBaseHelper extends SQLiteOpenHelper
         SQLiteDatabase sqLiteDatabase = getReadableDatabase();
         return sqLiteDatabase.rawQuery("SELECT * FROM " + TABLE_NAME8, null);
     }
+
+    boolean updateallEmployees(int eid,String fname, String lname){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eid);
+        cv.put(FIRST_NAME, fname);
+        cv.put(LAST_NAME, lname);
+
+        return sqLiteDatabase.update(TABLE_NAME8, cv, EmployeeID + "=?",new String[]{String.valueOf(eid)}) > 0;
+    }
+    boolean updateEmployee( int eid, String fname, String lname, int age, double asalary, int oRate, String etype) {
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        // the first argument of the put method is the column name and the second the value
+        cv.put(FIRST_NAME, fname);
+        cv.put(LAST_NAME, lname);
+        cv.put(AGE, age);
+        cv.put(MONTHLY_SALARY, asalary);
+        cv.put(OCCUPATION_RATE, oRate);
+        cv.put(EmployeeID, eid);
+        cv.put(EMPLOYEE_TYPE, etype);
+
+        // the insert method returns row number if the insertion is successful and -1 if unsuccessful
+        return sqLiteDatabase.update(TABLE_NAME1, cv, EmployeeID + "=?", new String[]{String.valueOf(eid)}) > 0;
+    }
+    boolean updateVehicle(int eid,String vType, String vModel,String vPlate, String vColor){
+
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eid);
+        cv.put(Vehicle_Type, vType);
+        cv.put(model, vModel);
+        cv.put(plate, vPlate);
+        cv.put(color, vColor);
+        return sqLiteDatabase.update(TABLE_NAME2, cv, EmployeeID + "=?",new String[]{String.valueOf(eid)}) > 0;
+    }
+
+    boolean updateCar(int eId, String cType){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eId);
+        cv.put(type, cType);
+
+        return sqLiteDatabase.update(TABLE_NAME3, cv, EmployeeID + "=?",new String[]{String.valueOf(eId)}) > 0;
+    }
+
+    boolean updateMotorcycle(int eId, String sCar){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eId);
+        cv.put(sideCar, sCar);
+
+        return sqLiteDatabase.update(TABLE_NAME4, cv, EmployeeID + "=?",new String[]{String.valueOf(eId)}) > 0;
+    }
+    boolean updateProgrammer(int eId, int projects){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eId);
+        cv.put(nbProjects, projects);
+
+        return sqLiteDatabase.update(TABLE_NAME5, cv, EmployeeID + "=?",new String[]{String.valueOf(eId)}) > 0;
+    }
+    boolean updateManager(int eId, int clients){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eId);
+        cv.put(nbClients, clients);
+
+        return sqLiteDatabase.update(TABLE_NAME6, cv, EmployeeID + "=?",new String[]{String.valueOf(eId)}) > 0;
+    }
+    boolean updateTester(int eId, int bugs){
+        SQLiteDatabase sqLiteDatabase = getWritableDatabase();
+
+        ContentValues cv = new ContentValues();
+
+        cv.put(EmployeeID, eId);
+        cv.put(nbBugs, bugs);
+
+        return sqLiteDatabase.update(TABLE_NAME7, cv, EmployeeID + "=?",new String[]{String.valueOf(eId)}) > 0;
+    }
+
     boolean deleteEmployee(int id) {
         SQLiteDatabase sqLiteDatabase = getWritableDatabase();
         // the delete method returns the number of rows affected
@@ -331,6 +427,4 @@ public class DataBaseHelper extends SQLiteOpenHelper
         x = sqLiteDatabase.delete(TABLE_NAME7, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
         return sqLiteDatabase.delete(TABLE_NAME8, EmployeeID + "=?", new String[]{String.valueOf(id)}) > 0;
     }
-
-
 }
